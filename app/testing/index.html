@@ -30,11 +30,12 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
 <form onsubmit="handle(event)">
-    X: <input type="number" name="x"><br>
-    Y: <input type="number" name="y"><br>
+    風量cmh: <input type="number" name="x"><br>
+    風壓pa: <input type="number" name="y"><br>
     <input type="submit" value="Submit"><br>
  </form>
  <div id="here" style="background: lightgrey"></div>
+ <p id="result"></p>
   
 <script>
     var abortController = undefined;
@@ -49,6 +50,7 @@
         e.preventDefault();
         document.getElementById("here").innerHTML = "";
         document.getElementById("here").appendChild(createLoading());
+        document.getElementById("result").innerHTML = "";
 
         if (!!abortController) {
             abortController.abort()
@@ -66,7 +68,8 @@
             .then(response => response.json())
             .then(json => {
                 document.getElementById("here").innerHTML = "";
-                makeSVG(json, input);
+                makeSVG(`#here`, json, input);
+                document.getElementById("result").innerText = `${!!json.best ? json.best : "沒有匹配的"} 風機`;
             })
             .catch(e => {
                 alert('fetch error: ' + e.message);
@@ -82,8 +85,7 @@
     ];
 
     const w = 300, h = 200, r = 100;
-    function makeSVG(data, input) { 
-
+    function makeSVG(selector, data, input) { 
                 const allX = data.data.reduce((p, c) => {
                     return [...p, ...c.points.map(point => point[0])]
                 }, []);
@@ -91,8 +93,6 @@
                 const allY = data.data.reduce((p, c) => {
                     return [...p, ...c.points.map(point => point[1])]
                 }, []);
-
-                debugger;
 
                 var xSc = d3.scaleLinear().domain([Math.min(...allX), Math.max(...allX)]).range([50, 250]);
                 var ySc = d3.scaleLinear().domain([Math.min(...allY), Math.max(...allY)]).range([175, 25]);
@@ -105,10 +105,7 @@
                         return [...p, ...c.points]
                 }, []);
 
-                // ds = ds.
-                // ds2 = ds2.map(d => [ xSc(d[0]), ySc(d[1]) ]);
-                debugger;
-                var svg = d3.select(`#here`)
+                var svg = d3.select(selector)
                 .append("svg:svg")
                 .attr("width", w)           //set the width and height of our visualization (these will be attributes of the <svg> tag
                 .attr("height", h)

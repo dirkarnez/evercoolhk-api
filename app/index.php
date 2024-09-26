@@ -157,10 +157,10 @@ $app->get('/calculate', function (Request $request, Response $response, array $a
     $filtered = array();
 
     foreach ($data as $datum) {
-        $p = Interpolation\LagrangePolynomial::interpolate($datum["points"]);
-
         $interpolate_start = $datum["points"][0][0];
         $interpolate_end = $datum["points"][count($datum["points"]) - 1][0];
+        
+        $p = Interpolation\LagrangePolynomial::interpolate($datum["points"]);
 
         $minDistance = INF;
         $minDistance_x = NAN;
