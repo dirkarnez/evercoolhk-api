@@ -12,6 +12,8 @@ use Money\Currencies\ISOCurrencies;
 use Money\Currency;
 use Money\Formatter\IntlMoneyFormatter;
 
+use MathPHP\NumericalAnalysis\Interpolation;
+
 require __DIR__ . '/vendor/autoload.php';
 
 $app = AppFactory::create();
@@ -38,6 +40,13 @@ $app->get('/names/{name}', function (Request $request, Response $response, array
     return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
 });
 
-$app->run();
 
+$app->get('/', function (Request $request, Response $response, array $args) {
+    $points = [[0, 1], [1, 4], [2, 9], [3, 16]];
+    $p = Interpolation\LagrangePolynomial::interpolate($points);                // input as a set of points
+    $response->getBody()->write((string)json_encode([$p(0), $p(3)], JSON_PRETTY_PRINT));
+    return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
+});
+
+$app->run();
 ?>
