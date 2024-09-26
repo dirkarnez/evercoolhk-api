@@ -40,9 +40,10 @@ $app->get('/names/{name}', function (Request $request, Response $response, array
     return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
 });
 
-$app->get('/', function (Request $request, Response $response, array $args) {
+$app->get('/calculate', function (Request $request, Response $response, array $args) {
     // $points = [[0, sqrt(0)], [2, sqrt(2)], [3, sqrt(3)], [4, sqrt(4)]];
-    
+    $queryParams = $request->getQueryParams();
+
     $data = array(
         array( 
             'name' => 'a',
@@ -151,7 +152,7 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     //     $data[$name] = array($data[$name])
     // }
 
-    $input = array(5, 2000);
+    $input = array($queryParams["x"], $queryParams["y"]);
 
     $filtered = array();
 
@@ -179,7 +180,7 @@ $app->get('/', function (Request $request, Response $response, array $args) {
         $t = $is_closer_to_origin($input, array($minDistance_x, $p($minDistance_x)));
 
         if ($t) {
-            array_push($filtered, $datum["name"]);
+            array_push($filtered, array("name" => $datum["name"], "minDistance" => $minDistance));
         }
         
 
@@ -188,9 +189,14 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     }
 
     
-
+    usort($filtered, function($a, $b) {
+        if ($a["minDistance"] == $b["minDistance"]) {
+            return 0;
+        }
+        return ($a["minDistance"] < $b["minDistance"]) ? -1 : 1;
+    });
     
-    $response->getBody()->write((string)json_encode(array("data" => $data, "best" => $filtered[0]), JSON_PRETTY_PRINT));
+    $response->getBody()->write((string)json_encode(array("data" => $data, "best" => $filtered[0]["name"], "filtered" => $filtered), JSON_PRETTY_PRINT));
     return $response->withHeader('Content-Type', 'application/json')->withStatus(200); 
 
 

@@ -29,9 +29,11 @@
 </head>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
-<form id="frm1" onsubmit="handle(event)">
-    First name: <input type="text" name="fname" value="Donald"><br>
- </form> 
+<form onsubmit="handle(event)">
+    X: <input type="number" name="x"><br>
+    Y: <input type="number" name="y"><br>
+    <input type="submit" value="Submit"><br>
+ </form>
  <div id="here" style="background: lightgrey"></div>
   
 <script>
@@ -42,6 +44,7 @@
         p.innerText = "Loading...";
         return p;
     }
+    
     function handle(e) {
         e.preventDefault();
         document.getElementById("here").innerHTML = "";
@@ -57,11 +60,13 @@
         myHeaders.append('pragma', 'no-cache');
         myHeaders.append('Cache-Control', 'no-cache');
 
-        fetch('/', { signal: abortController.signal, headers: myHeaders, cache: "no-cache" })
+        const formData = new FormData(e.srcElement);
+        const input = {x: formData.get("x"), y: formData.get("y")};
+        fetch(`/calculate?x=${input.x}&y=${input.y}`, { signal: abortController.signal, headers: myHeaders, cache: "no-cache" })
             .then(response => response.json())
             .then(json => {
                 document.getElementById("here").innerHTML = "";
-                makeSVG(json);
+                makeSVG(json, input);
             })
             .catch(e => {
                 alert('fetch error: ' + e.message);
@@ -77,8 +82,8 @@
     ];
 
     const w = 300, h = 200, r = 100;
-    function makeSVG(data) {
-  
+    function makeSVG(data, input) { 
+
                 const allX = data.data.reduce((p, c) => {
                     return [...p, ...c.points.map(point => point[0])]
                 }, []);
@@ -87,12 +92,17 @@
                     return [...p, ...c.points.map(point => point[1])]
                 }, []);
 
+                debugger;
+
                 var xSc = d3.scaleLinear().domain([Math.min(...allX), Math.max(...allX)]).range([50, 250]);
                 var ySc = d3.scaleLinear().domain([Math.min(...allY), Math.max(...allY)]).range([175, 25]);
-
-                const ddd = data.data.map(a => a.points.map(d => [ xSc(d[0]), ySc(d[1]) ]));
+                
+                input.x = xSc(input.x);
+                input.y = ySc(input.y);
+        
+                const ddd = data.data.map(a => ({name: a.name, points: a.points.map(d => [ xSc(d[0]), ySc(d[1]) ])}));
                 const circles = ddd.reduce((p, c) => {
-                        return [...p, ...c]
+                        return [...p, ...c.points]
                 }, []);
 
                 // ds = ds.
@@ -106,31 +116,50 @@
 
                 // Draw data points
    
+                const a= [
+                        ...circles.map(circle => ({x: circle[0], y: circle[1]})),
+                        {x: Number(input.x), y: Number(input.y), isInput: true }
+                    ];
+
                 svg.selectAll("circle")
-                    .data(circles)
+                    .data(a)
                     .enter()
                     .append("circle")
                     .attr("r", 3)
-                    .attr("cx", d => d[0])
-                    .attr("cy", d => d[1]);
+                    .attr("cx", d => d.x)
+                    .attr("cy", d => d.y)
+                    .style("fill", function(d){ 
+                        if (d.isInput) {
+                            return "red";
+                        } else {
+                            return "black";
+                        }
+                     });;
 
 
 
                 // Draw lines
 
                 var lnMkr = d3.line().curve(d3.curveNatural);
-
                 ddd.forEach(d => {
-                    svg.append("path")
-                    .attr("d", lnMkr(d))
+                   const path = svg.append("path")
+                   .attr("d", lnMkr(d.points))
                     .attr("fill", "none")
-                    .attr("stroke", "red");             
-                })
+                    .attr("stroke", "red");   
+                    
+                    // Get the length of the path
+                    const pathLength = path.node().getTotalLength();
 
-                svg.append("path")
-                    .attr("d", lnMkr(ds2))
-                    .attr("fill", "none")
-                    .attr("stroke", "white");
+                    // Calculate a point on the path (e.g., halfway)
+                    const point = path.node().getPointAtLength(pathLength / 2);
+
+                    // Add a label text at the calculated point
+                    svg.append("text")
+                        .attr("x", point.x)
+                        .attr("y", point.y)
+                        .attr("fill", "green") // Text color
+                        .text(d.name);
+                })
             }
 
 </script>
