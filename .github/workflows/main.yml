@@ -1,0 +1,22 @@
+name: php-build-actions-workflow
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: evercoolhk.com
+        username: evercoolhk
+        password: ${{ secrets.PASSWORD }}
+        local-dir: app
+        server-dir: /www/www/api/

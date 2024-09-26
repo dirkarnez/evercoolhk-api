@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "8b3f0960-712f-4174-aeb0-6dbe02a042cb",
+		"name": "Evercool",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://evercoolhk.com/api/init-db",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://evercoolhk.com/api/init-db",
+					"protocol": "https",
+					"host": [
+						"evercoolhk",
+						"com"
+					],
+					"path": [
+						"api",
+						"init-db"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://evercoolhk.com/api/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "login_id",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://evercoolhk.com/api/login",
+					"protocol": "https",
+					"host": [
+						"evercoolhk",
+						"com"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://evercoolhk.com/api/test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://evercoolhk.com/api/test",
+					"protocol": "https",
+					"host": [
+						"evercoolhk",
+						"com"
+					],
+					"path": [
+						"api",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://evercoolhk.com/api/logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://evercoolhk.com/api/logout",
+					"protocol": "https",
+					"host": [
+						"evercoolhk",
+						"com"
+					],
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
