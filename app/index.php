@@ -16,6 +16,16 @@ require __DIR__ . '/vendor/autoload.php';
 
 $app = AppFactory::create();
 
+if (strcmp($_SERVER['HTTP_HOST'], "evercoolhk.com") === 0) {
+  $app->setBasePath('/api');
+}
+
+$app->get('/', function (Request $request, Response $response, array $args) {
+    $response->getBody()->write((string)json_encode($_SERVER['HTTP_HOST'], JSON_PRETTY_PRINT));
+    return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
+});
+
+
 $app->get('/names/{name}', function (Request $request, Response $response, array $args) {
     $name = $args['name'];
 
