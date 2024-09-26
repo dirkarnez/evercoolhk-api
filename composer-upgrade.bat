@@ -1,3 +1,3 @@
-docker run --rm --interactive --tty --volume "%~dp0:/app" composer upgrade
-pause
-
+docker exec -i evercoolhk-api-app-1 composer install
+docker exec -i evercoolhk-api-app-1 composer upgrade
+docker exec -i evercoolhk-api-app-1 composer update

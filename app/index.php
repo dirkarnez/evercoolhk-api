@@ -9,11 +9,10 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Money\Money; // composer require moneyphp/money:^4.5.0
 use Money\Currencies\ISOCurrencies;
-use NumberFormatter;
 use Money\Currency;
 use Money\Formatter\IntlMoneyFormatter;
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 $app = AppFactory::create();
 
