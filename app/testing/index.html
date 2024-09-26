@@ -1,55 +1,139 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style>
+        :root {
+            --top1-color-group1: rgb(247, 136, 81);
+            --top2-color-group1: rgb(235, 247, 166);
+            --top3-color-group1: rgb(162, 217, 163);
+            --top4-color-group1: rgb(101, 186, 170);
+            --top5-color-group1: rgb(66, 136, 181);
+
+            --top1-color-group2: #88E71C;
+            --top2-color-group2: #17A5D5;
+
+            --card-background-color: #2E2E4B;
+        }
+
+        body {
+            background-color: #1c1e35;
+            color: white;
+        }
+    </style>
 </head>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<form id="frm1" onsubmit="handle(event)">
+    First name: <input type="text" name="fname" value="Donald"><br>
+ </form> 
+ <div id="here" style="background: lightgrey"></div>
+  
+<script>
+    var abortController = undefined;
+
+    function createLoading() {
+        const p = document.createElement("p");
+        p.innerText = "Loading...";
+        return p;
+    }
+    function handle(e) {
+        e.preventDefault();
+        document.getElementById("here").innerHTML = "";
+        document.getElementById("here").appendChild(createLoading());
+
+        if (!!abortController) {
+            abortController.abort()
+        }
+        
+        abortController = new AbortController();
+
+        var myHeaders = new Headers();
+        myHeaders.append('pragma', 'no-cache');
+        myHeaders.append('Cache-Control', 'no-cache');
+
+        fetch('/', { signal: abortController.signal, headers: myHeaders, cache: "no-cache" })
+            .then(response => response.json())
+            .then(json => {
+                document.getElementById("here").innerHTML = "";
+                makeSVG(json);
+            })
+            .catch(e => {
+                alert('fetch error: ' + e.message);
+            })
+    }
+
+    const COLOR_RANGE = [
+        '--top1-color-group1',
+        '--top2-color-group1',
+        '--top3-color-group1',
+        '--top4-color-group1',
+        '--top5-color-group1'
+    ];
+
+    const w = 300, h = 200, r = 100;
+    function makeSVG(data) {
+  
+                const allX = data.data.reduce((p, c) => {
+                    return [...p, ...c.points.map(point => point[0])]
+                }, []);
+
+                const allY = data.data.reduce((p, c) => {
+                    return [...p, ...c.points.map(point => point[1])]
+                }, []);
+
+                var xSc = d3.scaleLinear().domain([Math.min(...allX), Math.max(...allX)]).range([50, 250]);
+                var ySc = d3.scaleLinear().domain([Math.min(...allY), Math.max(...allY)]).range([175, 25]);
+
+                const ddd = data.data.map(a => a.points.map(d => [ xSc(d[0]), ySc(d[1]) ]));
+                const circles = ddd.reduce((p, c) => {
+                        return [...p, ...c]
+                }, []);
+
+                // ds = ds.
+                // ds2 = ds2.map(d => [ xSc(d[0]), ySc(d[1]) ]);
+                debugger;
+                var svg = d3.select(`#here`)
+                .append("svg:svg")
+                .attr("width", w)           //set the width and height of our visualization (these will be attributes of the <svg> tag
+                .attr("height", h)
+                .append("svg:g")                //make a group to hold our pie chart
+
+                // Draw data points
+   
+                svg.selectAll("circle")
+                    .data(circles)
+                    .enter()
+                    .append("circle")
+                    .attr("r", 3)
+                    .attr("cx", d => d[0])
+                    .attr("cy", d => d[1]);
+
+
+
+                // Draw lines
+
+                var lnMkr = d3.line().curve(d3.curveNatural);
+
+                ddd.forEach(d => {
+                    svg.append("path")
+                    .attr("d", lnMkr(d))
+                    .attr("fill", "none")
+                    .attr("stroke", "red");             
+                })
+
+                svg.append("path")
+                    .attr("d", lnMkr(ds2))
+                    .attr("fill", "none")
+                    .attr("stroke", "white");
+            }
+
+</script>
+
 
 <body>
-    <div>
-      	10 / 3 = ?
-        <br>
-        <button type="button" id="backend-api">Click me to calculate</button>
-        <!-- <button type="button" id="backend-abort">Click me to abort</button> -->
-    </div>
-
-    <script>
-        // "/api/"
-        (() => {
-            var abortController = undefined;
-
-            document.getElementById('backend-api').addEventListener('click', () => {
-                abortController = new AbortController();
-
-                var myHeaders = new Headers();
-                myHeaders.append('pragma', 'no-cache');
-                myHeaders.append('Cache-Control', 'no-cache');
-
-                fetch('/names/hello', { signal: abortController.signal, headers: myHeaders, cache: "no-cache" })
-                    .then(response => response.json())
-                    .then(json => {
-                  		alert(`10 / 3 = ${json.q}...${json.r}`);
-                    })
-                    .catch(e => {
-                        alert('fetch error: ' + e.message);
-                    })
-            });
-
-          	/*
-            document.getElementById('backend-abort').addEventListener("click", () => {
-                if (abortController) {
-                    abortController.abort();
-                    abortController = undefined;
-                    alert('backend api aborted');
-                } else {
-                    alert('nothing to abort');
-                }
-            })*/
-        })();
-
-    </script>
-</body>
-
-</html>
