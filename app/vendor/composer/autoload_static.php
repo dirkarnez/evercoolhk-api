@@ -59,6 +59,7 @@ class ComposerStaticInite2c3a1eb91636f261150dc00634e8ce9
             'MyApp\\' => 6,
             'Monolog\\' => 8,
             'Money\\' => 6,
+            'MathPHP\\' => 8,
         ),
         'L' => 
         array (
@@ -191,6 +192,10 @@ class ComposerStaticInite2c3a1eb91636f261150dc00634e8ce9
         'Money\\' => 
         array (
             0 => __DIR__ . '/..' . '/moneyphp/money/src',
+        ),
+        'MathPHP\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/markrogoyski/math-php/src',
         ),
         'Laravel\\SerializableClosure\\' => 
         array (

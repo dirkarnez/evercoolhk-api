@@ -91,6 +91,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'markrogoyski/math-php' => array(
+            'pretty_version' => 'v2.10.0',
+            'version' => '2.10.0.0',
+            'reference' => 'e587bfe3aadddfba0f3a40f49d2ed91132f30c5a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../markrogoyski/math-php',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'moneyphp/money' => array(
             'pretty_version' => 'v4.4.0',
             'version' => '4.4.0.0',
