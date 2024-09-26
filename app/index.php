@@ -40,60 +40,158 @@ $app->get('/names/{name}', function (Request $request, Response $response, array
     return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
 });
 
-
-// a_x=[1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 4.7,5, 5.5]
-// a_y=[1610, 1625, 1623, 1605, 1557, 1480, 1385, 1230, 1150, 1000, 500]
-
-// b_x=[4, 4.5, 4.7, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5]
-// b_y=[1410, 1380, 1355, 1310, 1240, 1160, 1060, 950, 840, 720, 580, 430, 245]
-
-// c_x=[2.5, 3, 3.5, 4, 4.5, 4.7, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12]
-// c_y=[1635, 1630, 1625, 1620, 1600, 1588, 1570, 1530, 1480, 1430, 1370, 1300, 1230, 1140, 1060, 970, 870, 760, 630, 480, 355]
-
-// d_x=[1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 4.7, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5]
-// d_y=[2080, 2075, 2070, 2065, 2060, 2050, 2040, 2035, 2033, 2030, 2010, 1970, 1930, 1880, 1820, 1760, 1690, 1610, 1530, 1440, 1350, 1260, 1150, 1040, 900, 680, 200]
-
 $app->get('/', function (Request $request, Response $response, array $args) {
     // $points = [[0, sqrt(0)], [2, sqrt(2)], [3, sqrt(3)], [4, sqrt(4)]];
     
+    $data = array(
+        array( 
+            'name' => 'a',
+            'points' => [
+                [1000, 1610], 
+                [1500, 1625], 
+                [2000, 1623], 
+                [2500, 1605], 
+                [3000, 1557], 
+                [3500, 1480], 
+                [4000, 1385], 
+                [4500, 1230], 
+                [4700, 1150],
+                [5000, 1000], 
+                [5500, 500]
+            ]
+            ),
+        array( 
+            'name' => 'b',
+            'points' => [
+                [4000, 1410], 
+                [4500, 1380], 
+                [4700, 1355], 
+                [5000, 1310], 
+                [5500, 1240], 
+                [6000, 1160], 
+                [6500, 1060], 
+                [7000, 950], 
+                [7500, 840], 
+                [8000, 720], 
+                [8500, 580], 
+                [9000, 430], 
+                [9500, 245]]
+            ),
+        array( 
+            'name' => 'c',
+            'points' => [
+                [2500, 1635], 
+                [3000, 1630], 
+                [3500, 1625], 
+                [4000, 1620], 
+                [4500, 1600], 
+                [4700, 1588], 
+                [5000, 1570], 
+                [5500, 1530], 
+                [6000, 1480], 
+                [6500, 1430], 
+                [7000, 1370], 
+                [7500, 1300], 
+                [8000, 1230], 
+                [8500, 1140], 
+                [9000, 1060], 
+                [9500, 970 ], 
+                [10000, 870], 
+                [10500, 760], 
+                [11000, 630], 
+                [11500, 480], 
+                [12000, 355]
+            ]
+            ),
+        array( 
+            'name' => 'd',
+            'points' => [
+                [1000, 2080], 
+                [1500, 2075], 
+                [2000, 2070], 
+                [2500, 2065], 
+                [3000, 2060], 
+                [3500, 2050], 
+                [4000, 2040], 
+                [4500, 2035], 
+                [4700, 2033], 
+                [5000, 2030], 
+                [5500, 2010], 
+                [6000, 1970], 
+                [6500, 1930],
+                [7000, 1880], 
+                [7500, 1820], 
+                [8000, 1760], 
+                [8500, 1690], 
+                [9000, 1610], 
+                [9500, 1530], 
+                [10000, 1440], 
+                [10500, 1350], 
+                [11000, 1260], 
+                [11500, 1150], 
+                [12000, 1040], 
+                [12500, 900 ], 
+                [13000, 680 ], 
+                [13500, 200 ]
+            ] 
+        )
+    );
+
     //$p = Interpolation\LagrangePolynomial::interpolate($points, 0);                // input as a set of points
-    function me($x) {
-        return 2 - $x;
+    // function me($x) {
+    //     return 2 - $x;
+    // }
+
+    // $points = [[0, me(0)], [1, me(1)], [2, me(2)], [3, me(3)]];
+
+    // foreach ($data as &$datum) {
+    //     $datum["t"] = 
+    // }
+    // foreach ($data as $name => $xy) {
+    //     $data[$name] = array($data[$name])
+    // }
+
+    $input = array(5, 2000);
+
+    $filtered = array();
+
+    foreach ($data as $datum) {
+        $p = Interpolation\LagrangePolynomial::interpolate($datum["points"]);
+
+        $interpolate_start = $datum["points"][0][0];
+        $interpolate_end = $datum["points"][count($datum["points"]) - 1][0];
+
+        $minDistance = INF;
+        $minDistance_x = NAN;
+
+        for ($x = $interpolate_start; $x <= $interpolate_end; $x += 1) {
+            $distance = sqrt(pow($x - $input[0], 2) + pow($p($x) - $input[1], 2));
+            if ($distance < $minDistance) {
+                $minDistance = $distance;
+                $minDistance_x = $x;
+            }
+        };
+
+        $is_closer_to_origin = function ($in, $point_in_curve) {
+            return sqrt(pow($point_in_curve[1] - 0, 2) + pow($point_in_curve[0] - 0, 2)) > sqrt(pow($in[1] - 0, 2) + pow($in[0] - 0, 2));
+        };
+
+        $t = $is_closer_to_origin($input, array($minDistance_x, $p($minDistance_x)));
+
+        if ($t) {
+            array_push($filtered, $datum["name"]);
+        }
+        
+
+        // $response->getBody()->write((string)json_encode([$p->getCoefficients(), $minDistance, array($minDistance_x, $p($minDistance_x)), $t], JSON_PRETTY_PRINT));
+        // return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
     }
 
-    $points = [[0, me(0)], [1, me(1)], [2, me(2)], [3, me(3)]];
-
-    $p = Interpolation\LagrangePolynomial::interpolate($points, 0);
     
-    $input = array(2, 2);
 
-    $interpolate_end = 0;
-    for ($x = 0; $x < INF; $x += 0.00001) {
-        $y = $p($x);
-        if ($y <= 0) {
-            $interpolate_end = $x;
-            break;
-        }
-    }
-
-
-    $minDistance = INF;
-    $minDistance_x = NAN;
-    for ($x = 0; $x < $interpolate_end; $x += 0.00001) {
-        $distance = sqrt(pow($x - $input[0], 2) + pow($p($x) - $input[1], 2));
-        if ($distance < $minDistance) {
-            $minDistance = $distance;
-            $minDistance_x = $x;
-        }
-    };
-
-    $is_closer_to_origin = function ($in, $point_in_curve) {
-        return sqrt(pow($point_in_curve[1] - 0, 2) + pow($point_in_curve[0] - 0, 2)) > sqrt(pow($in[1] - 0, 2) + pow($in[0] - 0, 2));
-    };
-    $t = $is_closer_to_origin($input, array($minDistance_x, $p($minDistance_x)));
-
-    $response->getBody()->write((string)json_encode([$minDistance, $minDistance_x, $p($minDistance_x), $t], JSON_PRETTY_PRINT));
-    return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
+    
+    $response->getBody()->write((string)json_encode(array("data" => $data, "best" => $filtered[0]), JSON_PRETTY_PRINT));
+    return $response->withHeader('Content-Type', 'application/json')->withStatus(200); 
 
 
 
