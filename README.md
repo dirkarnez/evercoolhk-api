@@ -16,6 +16,7 @@ evercoolhk-api
 
 ### Testing out
 - http://localhost:8000/names/hello
+- https://evercoolhk.com/api/names/hello
  
 ### Database
 - Server: Localhost via UNIX socket
