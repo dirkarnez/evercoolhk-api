@@ -20,7 +20,7 @@ require(__DIR__ . '/vendor/autoload.php');
 
 $app = AppFactory::create();
 
-if (strcmp($_SERVER['SERVER_NAME'], "www.evercoolhk.com") === 0) {
+if (strcmp($_SERVER['SERVER_NAME'], "www.evercoolhk.com") === 0 || strcmp($_SERVER['SERVER_NAME'], "evercoolhk.com") === 0) {
   $app->setBasePath('/api');
 }
 
