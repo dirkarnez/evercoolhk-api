@@ -13,11 +13,17 @@ evercoolhk-api
 - Just run `run.cmd`
 - for composer, go to Docker GUI terminal inside: `composer install` / `composer update`
  
-
+### ORM
+- [dirkarnez/eloquent-wrapper](https://github.com/dirkarnez/eloquent-wrapper)
+  
 ### Testing out
 - http://localhost:8000/names/hello
 - https://evercoolhk.com/api/names/hello
  
+
+### CMS
+- [Winter CMS](https://github.com/wintercms)
+
 ### Database
 - Server: Localhost via UNIX socket
 - Server type: MySQL
