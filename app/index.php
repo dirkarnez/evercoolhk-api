@@ -20,8 +20,8 @@ require(__DIR__ . '/vendor/autoload.php');
 
 $app = AppFactory::create();
 
-if (strcmp($_SERVER['SERVER_NAME'], "www.evercoolhk.com") === 0 || strcmp($_SERVER['SERVER_NAME'], "evercoolhk.com") === 0) {
-  $app->setBasePath('/api');
+if (str_contains($_SERVER['SERVER_NAME'], 'evercoolhk.com')) { 
+    $app->setBasePath('/api');
 }
 
 $app->get('/names/{name}', function (Request $request, Response $response, array $args) {
@@ -33,7 +33,7 @@ $app->get('/names/{name}', function (Request $request, Response $response, array
     
     $moneyFormatter = new IntlMoneyFormatter($numberFormatter, new ISOCurrencies());
     
-    $names = array("Peter", "Paul", "Mary", $moneyFormatter->format(Money::HKD(1000)->divide(6)), Money::HKD(1000)->divide(6)); // in cents
+    $names = array("Peter", "Paul", "Mary", $_SERVER['SERVER_NAME'], $moneyFormatter->format(Money::HKD(1000)->divide(6)), Money::HKD(1000)->divide(6)); // in cents
     array_push($names, $name);
 
     sort($names);

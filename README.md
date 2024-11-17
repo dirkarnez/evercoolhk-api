@@ -21,6 +21,44 @@ evercoolhk-api
 - https://evercoolhk.com/api/names/hello
  
 
+### Localhost
+```nginx
+server {
+    listen 80 default_server;
+    server_name localhost ;
+    root "C:/Users/Administrator/Downloads/evercoolhk-api/app/";
+    
+    index index.html index.htm index.php;
+ 
+    # Access Restrictions
+    allow       127.0.0.1;
+    deny        all;
+ 
+    include "C:/Users/Administrator/Downloads/laragon-php-8.0.0-mariadb-10.11.10-portable-v6.0.0/etc/nginx/alias/*.conf";
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+		autoindex on;
+    }
+    
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass php_upstream;		
+        #fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    }
+
+	
+    charset utf-8;
+	
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+    location ~ /\.ht {
+        deny all;
+    }
+	
+}
+```
+
 ### CMS
 - [Winter CMS](https://github.com/wintercms)
 
