@@ -21,7 +21,7 @@ evercoolhk-api
 - https://evercoolhk.com/api/names/hello
  
 
-### Localhost
+### Localhost for [laragon-portable](https://github.com/dirkarnez/laragon-portable)
 ```nginx
 server {
     listen 80 default_server;
