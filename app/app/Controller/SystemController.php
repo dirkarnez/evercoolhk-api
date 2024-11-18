@@ -420,7 +420,6 @@ final class SystemController
                 new Project([
                     'title_chi' => null,
                     'title_eng' => 'Healthcare Pharmaceuticals Ltd. Head office',
-                    'title_chi' => null,
                     'client_name_eng' => 'Healthcare Pharmaceuticals Ltd.',
                     'year' => null, 
                     'image_src' => 'https://evercoolhk.com/api/uploads/Healthcare%20Pharmaceuticals%20Ltd%20-%20Bangladesh.jpg'
@@ -431,7 +430,7 @@ final class SystemController
 
             $this->session->invalidate();
             return $this->responder->ok($response);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             Capsule::rollBack();
             return $this->responder->internal_server_error($response);
         }

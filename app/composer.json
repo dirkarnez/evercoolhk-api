@@ -21,6 +21,9 @@
         "monolog/monolog": "^2.5",
         "moneyphp/money": "^4.4.0"
     },
+    "require-dev": {
+        "vimeo/psalm": "^5.26.1"
+    },
     "autoload": {
         "psr-4": {
             "MyApp\\": "app/"

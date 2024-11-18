@@ -24,6 +24,15 @@ if (str_contains($_SERVER['SERVER_NAME'], 'evercoolhk.com')) {
     $app->setBasePath('/api');
 }
 
+/**
+ * @return array<string>
+ */
+function takesAnInt(int $i) {
+    return [$i, "hello"];
+}
+
+takesAnInt(0);
+
 $app->get('/names/{name}', function (Request $request, Response $response, array $args) {
     $name = $args['name'];
 
