@@ -52,7 +52,6 @@ $app->get('/names/{name}', function (Request $request, Response $response, array
 });
 
 $app->get('/pdf', function (Request $request, Response $response, array $args) {
-    
     // create new PDF document
     $pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
