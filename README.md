@@ -62,6 +62,9 @@ server {
 ### CMS
 - [Winter CMS](https://github.com/wintercms)
 
+### Tricks
+- Use matlab for interoplation
+
 ### Database
 - Server: Localhost via UNIX socket
 - Server type: MySQL
