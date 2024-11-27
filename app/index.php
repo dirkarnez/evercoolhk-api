@@ -136,7 +136,14 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
     // $pdf->MultiCell(55, 5, '[JUSTIFY] '.$txt."\n", 1, 'J', 1, 2, '' ,'', true);
     // $pdf->MultiCell(55, 5, '[DEFAULT] '.$txt, 1, '', 0, 1, '', '', true);
 
-    $pdf->writeHTML("<br><br>", true, false, true, false, '');
+    $header = function($name) use($styleForTable_Th_Td) {
+        return '<th align="center" style="'. $styleForTable_Th_Td . '">
+                    <div style="vertical-align: middle">
+                        <p>'. $name .'</p>
+                    </div>
+                </th>';
+    };
+    
     $html = '<table cellpadding="2" style="font-size: 7.8; font-weight: normal; font-family:' . $fontnameRegular .  '">
         <tbody>
             <tr>
@@ -198,22 +205,22 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
     <br>
     <table style="'. $styleForTable_Th_Td . ';text-align: center;" cellpadding="4">
         <thead>
-            <tr style="font-size: 7.8; font-weight: normal; font-family:' . $fontnameRegular .  ';">
-                <th style="'. $styleForTable_Th_Td . '">序号</th>
-                <th style="'. $styleForTable_Th_Td . '">机组编号</th>
-                <th style="'. $styleForTable_Th_Td . '">型号</th>
-                <th style="'. $styleForTable_Th_Td . '">送风量<br>l/s</th>
-                <th style="'. $styleForTable_Th_Td . '">新风量<br>l/s</th>
-                <th style="'. $styleForTable_Th_Td . '">机外<br>余压<br>(Pa)</th>
-                <th style="'. $styleForTable_Th_Td . '">过滤器</th>
-                <th style="'. $styleForTable_Th_Td . '">冷水盘<br>管排数<br>(Rows)</th>
-                <th style="'. $styleForTable_Th_Td . '">制冷量<br>(KW)</th>
-                <th style="'. $styleForTable_Th_Td . '">送风机</th>
-                <th style="'. $styleForTable_Th_Td . '">EC风机<br>数量<br>（台）</th>
-                <th style="'. $styleForTable_Th_Td . '">参考尺寸<br>(MM)<br>H * W * L</th>
-                <th style="'. $styleForTable_Th_Td . '">机组单价<br>(HKD)</th>
-                <th style="'. $styleForTable_Th_Td . '">机组数量</th>
-                <th style="'. $styleForTable_Th_Td . '">小计<br>（HKD）</th>
+            <tr style="font-size: 7.8; font-weight: normal; font-family:' . $fontnameRegular .  ';">'
+                . $header("序号") 
+                . $header("机组编号") 
+                . $header("型号") 
+                . $header("送风量<br>l/s") 
+                . $header("新风量<br>l/s") 
+                . $header("机外<br>余压<br>(Pa)")
+                . $header("过滤器")
+                . $header("冷水盘<br>管排数<br>(Rows)")
+                . $header("制冷量<br>(KW)")
+                . $header("送风机")
+                . $header("EC风机<br>数量<br>（台）")
+                . $header("参考尺寸<br>(MM)<br>H * W * L")
+                . $header("机组单价<br>(HKD)")
+                . $header("机组数量")
+                . $header("小计<br>（HKD）") . '
             </tr>
         </thead>
         <tbody>
