@@ -14,6 +14,9 @@ use Money\Formatter\IntlMoneyFormatter;
 
 use MathPHP\NumericalAnalysis\Interpolation;
 
+define ('K_TCPDF_EXTERNAL_CONFIG', true);
+define ('K_PATH_IMAGES', __DIR__ . "/uploads/");
+
 ini_set('memory_limit', '-1');
 
 require(__DIR__ . '/vendor/autoload.php');
@@ -51,9 +54,17 @@ $app->get('/names/{name}', function (Request $request, Response $response, array
     return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
 });
 
+class MyTCPDF extends TCPDF{
+    public function Header(){
+        $styleForTable_Th_Td='border: 1px solid black; border-collapse: collapse;';
+        $html = '<img style="height: 59px;" src="'. __DIR__ . "/uploads/icon.jpg" . '">';
+        $this->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = 'top', $autopadding = true);
+    }
+}
+
 $app->get('/pdf', function (Request $request, Response $response, array $args) {
     // create new PDF document
-    $pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+    $pdf = new MyTCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
     // set document information
     // $pdf->SetCreator('PDF_CREATOR');
@@ -61,9 +72,12 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
     // $pdf->SetTitle('TCPDF Example 006');
     // $pdf->SetSubject('TCPDF Tutorial');
     // $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+    
 
+
+    // define ('PDF_HEADER_LOGO', __DIR__ . "/uploads/icon.png");
     // set default header data
-    $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 006', PDF_HEADER_STRING);
+    // $pdf->SetHeaderData( "icon.jpg", 59, PDF_HEADER_TITLE.' 006', PDF_HEADER_STRING);
 
     // set header and footer fonts
     $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -73,7 +87,8 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
     // $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
     // set margins
-    $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+    $pdf->SetMargins(20, 30, 20);
+
     $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
     $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
@@ -93,10 +108,13 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
     // set default font subsetting mode
     
     $pdf->setFontSubsetting(true);
-    $fontname = TCPDF_FONTS::addTTFfont(__DIR__ . '/assets/fonts/03_NotoSerifCJK-TTF-VF/Variable/TTF/NotoSerifCJKhk-VF.ttf', 'NotoSerifCJKhk', '', 10);
+    //$fontnameRegular = TCPDF_FONTS::addTTFfont(__DIR__ . '/assets/fonts/03_NotoSerifCJK-TTF-VF/Variable/TTF/NotoSerifCJKhk-VF.ttf', '', '');
+    $fontnameRegular = TCPDF_FONTS::addTTFfont(__DIR__ . '/assets/fonts/NotoSerifCJKhk/NotoSerifCJKhk-Regular.ttf', '', '');
+    $fontnameBold = TCPDF_FONTS::addTTFfont(__DIR__ . '/assets/fonts/NotoSerifCJKhk/NotoSerifCJKhk-Bold.ttf', '', '');
     
     // // // set font
-    $pdf->SetFont($fontname, '', 10);
+    $pdf->SetFont($fontnameRegular, '', 7.80, '', false);
+    $pdf->SetFont($fontnameBold, 'B', 7.80, '', false);
 
     // add a page
     $pdf->AddPage();
@@ -104,41 +122,183 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
     // create some HTML content
     $subtable = '<table border="1" cellspacing="6" cellpadding="4"><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></table>';
 
+
+
     $styleForTable_Th_Td='border: 1px solid black; border-collapse: collapse;';
-    $html = '<h2>HTML TABLE:</h2>
-    <table style="'. $styleForTable_Th_Td . '" cellpadding="4">
+    $html = '<h1 style="font-weight: bold; font-family:' . $fontnameBold .  ';text-align: center;">报 价 单</h1><br>';
+    $pdf->writeHTML($html, true, false, true, false, '');
+
+    $txt = 'Lore';
+
+    // Multicell test
+
+
+    // $pdf->MultiCell(55, 5, '[JUSTIFY] '.$txt."\n", 1, 'J', 1, 2, '' ,'', true);
+    // $pdf->MultiCell(55, 5, '[DEFAULT] '.$txt, 1, '', 0, 1, '', '', true);
+
+    $pdf->writeHTML("<br><br>", true, false, true, false, '');
+    $html = '<table cellpadding="2" style="font-size: 7.8; font-weight: normal; font-family:' . $fontnameRegular .  '">
+        <tbody>
+            <tr>
+                <td style="width: 70%">
+                    <table cellpadding="2">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px">TO：</td>
+                                <td style="width: 100%">香港嘉毅设备有限公司</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 40px">Tel：</td>
+                                <td style="width: 100%">00852-2356 8598</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 40px">Attn：</td>
+                                <td style="width: 100%">Ivy</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 40px">Ref：</td>
+                                <td style="width: 100%">The Proposed Shopping Mall Development(购物中心)</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">供应"TECH FREE "牌产品报价如下：</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td style="width: 30%">
+                    <table cellpadding="2">
+                        <tbody>
+                            <tr>
+                                <td style="width: 60px">Ref No：</td>
+                                <td style="width: 100%">TQ364-06-24</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 60px">Date：</td>
+                                <td style="width: 100%">2024/6/11</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 60px">Currency：</td>
+                                <td style="width: 100%">HKD/RMB=0.92</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <table cellpadding="2">
+    <tbody>
         <tr>
-            <th style="'. $styleForTable_Th_Td . '" >#</th>
-            <th style="'. $styleForTable_Th_Td . '" align="right"></th>
-            <th style="'. $styleForTable_Th_Td . '" align="left">LEFT align</th>
-            <th style="'. $styleForTable_Th_Td . '" >中文</th>
+            <td><h1 style="font-size: 7.8; font-weight: bold; font-family:' . $fontnameBold .  ';">一、组合式空气处理机组</h1></td>
         </tr>
-        <tr>
-            <td style="'. $styleForTable_Th_Td . '">1</td>
-            <td style="'. $styleForTable_Th_Td . '"  bgcolor="#cccccc" align="center" colspan="2">A1 ex<i>amp</i>le <a href="http://www.tcpdf.org">link</a> column span. One two tree four five six seven eight nine ten.<br />line after br<br /><small>small text</small> normal <sub>subscript</sub> normal <sup>superscript</sup> normal  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla<ol><li>first<ol><li>sublist</li><li>sublist</li></ol></li><li>second</li></ol><small color="#FF0000" bgcolor="#FFFF00">small small small small small small small small small small small small small small small small small small small small</small></td>
-            <td style="'. $styleForTable_Th_Td . '">4B</td>
-        </tr>
-        <tr>
-            <td style="'. $styleForTable_Th_Td . '">'.$subtable.'</td>
-            <td style="'. $styleForTable_Th_Td . '" bgcolor="#0000FF" color="yellow" align="center">A2 € &euro; &#8364; &amp; è &egrave;<br/>A2 € &euro; &#8364; &amp; è &egrave;</td>
-            <td style="'. $styleForTable_Th_Td . '" bgcolor="#FFFF00" align="left"><font color="#FF0000">Red</font> Yellow BG</td>
-            <td style="'. $styleForTable_Th_Td . '">4C</td>
-        </tr>
-        <tr>
-            <td>1A</td>
-            <td rowspan="2" colspan="2" bgcolor="#FFFFCC">2AA<br />2AB<br />2AC</td>
-            <td bgcolor="#FF0000">4D</td>
-        </tr>
-        <tr>
-            <td>1B</td>
-            <td>4E</td>
-        </tr>
-        <tr>
-            <td>1C</td>
-            <td>2C</td>
-            <td>3C</td>
-            <td>4F</td>
-        </tr>
+        </tbody>
+    </table>
+    <br>
+    <table style="'. $styleForTable_Th_Td . ';text-align: center;" cellpadding="4">
+        <thead>
+            <tr>
+                <th style="'. $styleForTable_Th_Td . '">序号</th>
+                <th style="'. $styleForTable_Th_Td . '"> 机组编号</th>
+                <th style="'. $styleForTable_Th_Td . '">1</th>
+                <th style="'. $styleForTable_Th_Td . '">1</th>
+                <th style="'. $styleForTable_Th_Td . '">1</th>
+                <th style="'. $styleForTable_Th_Td . '">1</th>
+                <th style="'. $styleForTable_Th_Td . '">1</th>
+                <th style="'. $styleForTable_Th_Td . '">1</th>
+                <th style="'. $styleForTable_Th_Td . '">1</th>
+                <th style="'. $styleForTable_Th_Td . '">1</th>
+                <th style="'. $styleForTable_Th_Td . '">1</th>
+                <th style="'. $styleForTable_Th_Td . '">1</th>
+                <th style="'. $styleForTable_Th_Td . '">1</th>
+                <th style="'. $styleForTable_Th_Td . '">1</th>
+                <th style="'. $styleForTable_Th_Td . '">1</th>
+            </tr>
+        </thead>
+        <!--
+        <tbody>
+            <tr>
+                <td style="'. $styleForTable_Th_Td . '">1</td>
+                <td style="'. $styleForTable_Th_Td . '"  bgcolor="#cccccc" align="center" colspan="2">A1 ex<i>amp</i>le <a href="http://www.tcpdf.org">link</a> column span. One two tree four five six seven eight nine ten.<br />line after br<br /><small>small text</small> normal <sub>subscript</sub> normal <sup>superscript</sup> normal  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla<ol><li>first<ol><li>sublist</li><li>sublist</li></ol></li><li>second</li></ol><small color="#FF0000" bgcolor="#FFFF00">small small small small small small small small small small small small small small small small small small small small</small></td>
+                <td style="'. $styleForTable_Th_Td . '">4B</td>
+            </tr>
+            <tr>
+                <td style="'. $styleForTable_Th_Td . '">'.$subtable.'</td>
+                <td style="'. $styleForTable_Th_Td . '" bgcolor="#0000FF" color="yellow" align="center">A2 € &euro; &#8364; &amp; è &egrave;<br/>A2 € &euro; &#8364; &amp; è &egrave;</td>
+                <td style="'. $styleForTable_Th_Td . '" bgcolor="#FFFF00" align="left"><font color="#FF0000">Red</font> Yellow BG</td>
+                <td style="'. $styleForTable_Th_Td . '">4C</td>
+            </tr>
+            <tr>
+                <td>1A</td>
+                <td rowspan="2" colspan="2" bgcolor="#FFFFCC">2AA<br />2AB<br />2AC</td>
+                <td bgcolor="#FF0000">4D</td>
+            </tr>
+            <tr>
+                <td>1B</td>
+                <td>4E</td>
+            </tr>
+            <tr>
+                <td>1C</td>
+                <td>2C</td>
+                <td>3C</td>
+                <td>4F</td>
+            </tr>
+            <tr>
+                <td>1C</td>
+                <td>2C</td>
+                <td>3C</td>
+                <td>4F</td>
+            </tr>
+            <tr>
+                <td>1C</td>
+                <td>2C</td>
+                <td>3C</td>
+                <td>4F</td>
+            </tr>
+            <tr>
+                <td>1C</td>
+                <td>2C</td>
+                <td>3C</td>
+                <td>4F</td>
+            </tr>
+            <tr>
+                <td>1C</td>
+                <td>2C</td>
+                <td>3C</td>
+                <td>4F</td>
+            </tr>
+            <tr>
+                <td>1C</td>
+                <td>2C</td>
+                <td>3C</td>
+                <td>4F</td>
+            </tr>
+            <tr>
+                <td>1C</td>
+                <td>2C</td>
+                <td>3C</td>
+                <td>4F111</td>
+            </tr>
+            <tr>
+                <td>1C</td>
+                <td>2C</td>
+                <td>3C</td>
+                <td>4F4</td>
+            </tr>
+            <tr>
+                <td>1C</td>
+                <td>2C</td>
+                <td>3C</td>
+                <td>4F</td>
+            </tr>
+            <tr>
+                <td>1C</td>
+                <td>2C</td>
+                <td>3C</td>
+                <td>4F</td>
+            </tr>
+        </tbody>
+        -->
     </table>';
 
     // output the HTML content

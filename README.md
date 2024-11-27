@@ -17,7 +17,8 @@ evercoolhk-api
 - [dirkarnez/eloquent-wrapper](https://github.com/dirkarnez/eloquent-wrapper)
   
 ### Testing out
-- http://localhost:8000/names/hello
+- Largon: http://localhost:80/names/hello
+- Docker: http://localhost:8000/names/hello
 - https://evercoolhk.com/api/names/hello
  
 
