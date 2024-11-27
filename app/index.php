@@ -187,119 +187,75 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
         </tbody>
     </table>
     <br>
+    <br>
     <table cellpadding="2">
-    <tbody>
-        <tr>
-            <td><h1 style="font-size: 7.8; font-weight: bold; font-family:' . $fontnameBold .  ';">一、组合式空气处理机组</h1></td>
-        </tr>
+        <tbody>
+            <tr>
+                <td><h1 style="font-size: 7.8; font-weight: bold; font-family:' . $fontnameBold .  ';">一、组合式空气处理机组</h1></td>
+            </tr>
         </tbody>
     </table>
     <br>
     <table style="'. $styleForTable_Th_Td . ';text-align: center;" cellpadding="4">
         <thead>
-            <tr>
+            <tr style="font-size: 7.8; font-weight: normal; font-family:' . $fontnameRegular .  ';">
                 <th style="'. $styleForTable_Th_Td . '">序号</th>
-                <th style="'. $styleForTable_Th_Td . '"> 机组编号</th>
-                <th style="'. $styleForTable_Th_Td . '">1</th>
-                <th style="'. $styleForTable_Th_Td . '">1</th>
-                <th style="'. $styleForTable_Th_Td . '">1</th>
-                <th style="'. $styleForTable_Th_Td . '">1</th>
-                <th style="'. $styleForTable_Th_Td . '">1</th>
-                <th style="'. $styleForTable_Th_Td . '">1</th>
-                <th style="'. $styleForTable_Th_Td . '">1</th>
-                <th style="'. $styleForTable_Th_Td . '">1</th>
-                <th style="'. $styleForTable_Th_Td . '">1</th>
-                <th style="'. $styleForTable_Th_Td . '">1</th>
-                <th style="'. $styleForTable_Th_Td . '">1</th>
-                <th style="'. $styleForTable_Th_Td . '">1</th>
-                <th style="'. $styleForTable_Th_Td . '">1</th>
+                <th style="'. $styleForTable_Th_Td . '">机组编号</th>
+                <th style="'. $styleForTable_Th_Td . '">型号</th>
+                <th style="'. $styleForTable_Th_Td . '">送风量<br>l/s</th>
+                <th style="'. $styleForTable_Th_Td . '">新风量<br>l/s</th>
+                <th style="'. $styleForTable_Th_Td . '">机外<br>余压<br>(Pa)</th>
+                <th style="'. $styleForTable_Th_Td . '">过滤器</th>
+                <th style="'. $styleForTable_Th_Td . '">冷水盘<br>管排数<br>(Rows)</th>
+                <th style="'. $styleForTable_Th_Td . '">制冷量<br>(KW)</th>
+                <th style="'. $styleForTable_Th_Td . '">送风机</th>
+                <th style="'. $styleForTable_Th_Td . '">EC风机<br>数量<br>（台）</th>
+                <th style="'. $styleForTable_Th_Td . '">参考尺寸<br>(MM)<br>H * W * L</th>
+                <th style="'. $styleForTable_Th_Td . '">机组单价<br>(HKD)</th>
+                <th style="'. $styleForTable_Th_Td . '">机组数量</th>
+                <th style="'. $styleForTable_Th_Td . '">小计<br>（HKD）</th>
             </tr>
         </thead>
-        <!--
         <tbody>
             <tr>
-                <td style="'. $styleForTable_Th_Td . '">1</td>
-                <td style="'. $styleForTable_Th_Td . '"  bgcolor="#cccccc" align="center" colspan="2">A1 ex<i>amp</i>le <a href="http://www.tcpdf.org">link</a> column span. One two tree four five six seven eight nine ten.<br />line after br<br /><small>small text</small> normal <sub>subscript</sub> normal <sup>superscript</sup> normal  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla<ol><li>first<ol><li>sublist</li><li>sublist</li></ol></li><li>second</li></ol><small color="#FF0000" bgcolor="#FFFF00">small small small small small small small small small small small small small small small small small small small small</small></td>
-                <td style="'. $styleForTable_Th_Td . '">4B</td>
-            </tr>
-            <tr>
-                <td style="'. $styleForTable_Th_Td . '">'.$subtable.'</td>
-                <td style="'. $styleForTable_Th_Td . '" bgcolor="#0000FF" color="yellow" align="center">A2 € &euro; &#8364; &amp; è &egrave;<br/>A2 € &euro; &#8364; &amp; è &egrave;</td>
-                <td style="'. $styleForTable_Th_Td . '" bgcolor="#FFFF00" align="left"><font color="#FF0000">Red</font> Yellow BG</td>
-                <td style="'. $styleForTable_Th_Td . '">4C</td>
-            </tr>
-            <tr>
-                <td>1A</td>
-                <td rowspan="2" colspan="2" bgcolor="#FFFFCC">2AA<br />2AB<br />2AC</td>
-                <td bgcolor="#FF0000">4D</td>
-            </tr>
-            <tr>
-                <td>1B</td>
-                <td>4E</td>
-            </tr>
-            <tr>
-                <td>1C</td>
-                <td>2C</td>
-                <td>3C</td>
-                <td>4F</td>
-            </tr>
-            <tr>
-                <td>1C</td>
-                <td>2C</td>
-                <td>3C</td>
-                <td>4F</td>
-            </tr>
-            <tr>
-                <td>1C</td>
-                <td>2C</td>
-                <td>3C</td>
-                <td>4F</td>
-            </tr>
-            <tr>
-                <td>1C</td>
-                <td>2C</td>
-                <td>3C</td>
-                <td>4F</td>
-            </tr>
-            <tr>
-                <td>1C</td>
-                <td>2C</td>
-                <td>3C</td>
-                <td>4F</td>
-            </tr>
-            <tr>
-                <td>1C</td>
-                <td>2C</td>
-                <td>3C</td>
-                <td>4F</td>
-            </tr>
-            <tr>
-                <td>1C</td>
-                <td>2C</td>
-                <td>3C</td>
-                <td>4F111</td>
-            </tr>
-            <tr>
-                <td>1C</td>
-                <td>2C</td>
-                <td>3C</td>
-                <td>4F4</td>
-            </tr>
-            <tr>
-                <td>1C</td>
-                <td>2C</td>
-                <td>3C</td>
-                <td>4F</td>
-            </tr>
-            <tr>
-                <td>1C</td>
-                <td>2C</td>
-                <td>3C</td>
-                <td>4F</td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
+                <td style="'. $styleForTable_Th_Td . '"></td>
             </tr>
         </tbody>
-        -->
-    </table>';
+    </table><br>
+    <table cellpadding="2">
+        <tbody>
+            <tr>
+                <td>
+                    <span style="text-decoration: underline;font-size: 7.8; font-weight: bold; font-family:' . $fontnameBold .  ';text-align: right;">
+                    合计
+                    </span>
+                    &nbsp;&nbsp;
+                    <span style="text-decoration: underline;font-size: 7.8; font-weight: bold; font-family:' . $fontnameBold .  ';text-align: right;">
+                    10
+                    </span>
+                    &nbsp;&nbsp;&nbsp;
+                    <span style="text-decoration: underline;font-size: 7.8; font-weight: bold; font-family:' . $fontnameBold .  ';text-align: right;">
+                    757,620
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    ';
 
     // output the HTML content
     $pdf->writeHTML($html, true, false, true, false, '');
