@@ -12,6 +12,12 @@ use Money\Currencies\ISOCurrencies;
 use Money\Currency;
 use Money\Formatter\IntlMoneyFormatter;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+use Dotenv\Dotenv;
+
+
 use MathPHP\NumericalAnalysis\Interpolation;
 
 define ('K_TCPDF_EXTERNAL_CONFIG', true);
@@ -62,6 +68,60 @@ class MyTCPDF extends TCPDF{
     }
 }
 
+$app->get('/email-testing', function (Request $request, Response $response, array $args) {
+    $dotenv = Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+
+    $mail = new PHPMailer(true); // Passing `true` enables exceptions
+    
+    try {
+        //Server settings
+        # $mail->SMTPDebug = 2; // Enable verbose debug output
+        $mail->isSMTP(); // Set mailer to use SMTP
+        $mail->Host = 'smtp.gmail.com'; // Specify SMTP server
+        $mail->SMTPAuth = true; // Enable SMTP authentication
+        $mail->Username = $_ENV['GMAIL_SENDER_ACCOUNT']; // SMTP username
+        $mail->Password = $_ENV['GMAIL_SENDER_PASSWORD']; // SMTP password
+        $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587; // TCP port to connect to
+        
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
+        
+        //Recipients
+        $mail->setFrom($mail->Username, 'Test Sender');
+        $mail->addAddress($mail->Username, 'Test receipt'); // Add a recipient
+        # $mail->addAddress(‘ellen@example.com’); // Name is optional
+        # $mail->addReplyTo(‘info@example.com’, ‘Information’);
+        # $mail->addCC(‘cc@example.com’);
+        # $mail->addBCC(‘bcc@example.com’);
+        
+        
+        
+        //Attachments
+        # $mail->addAttachment(‘/var/tmp/file.tar.gz’); // Add attachments
+        # $mail->addAttachment(‘/tmp/image.jpg’, ‘new.jpg’); // Optional name
+        
+        
+        
+        //Content
+        $mail->isHTML(true); // Set email format to HTML
+        $mail->Subject = 'Here is the subject 587!!';
+        $mail->Body = 'This is the HTML message body <b>in bold!</b>';
+        
+        $mail->send();
+        $response->getBody()->write((string)json_encode('Message has been sent', JSON_PRETTY_PRINT));
+        return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
+    } catch (Exception $e) {
+        $response->getBody()->write((string)json_encode('Message could not be sent. Mailer Error: ', $mail->ErrorInfo, JSON_PRETTY_PRINT));
+        return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
+    }
+});
 $app->get('/pdf', function (Request $request, Response $response, array $args) {
     // create new PDF document
     $pdf = new MyTCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);

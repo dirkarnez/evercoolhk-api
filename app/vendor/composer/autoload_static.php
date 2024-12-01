@@ -71,8 +71,10 @@ class ComposerStaticInite2c3a1eb91636f261150dc00634e8ce9
             'Psr\\Clock\\' => 10,
             'Psalm\\' => 6,
             'PhpParser\\' => 10,
+            'PhpOption\\' => 10,
             'PhpDocReader\\' => 13,
             'PHPStan\\PhpDocParser\\' => 21,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
         array (
@@ -94,6 +96,10 @@ class ComposerStaticInite2c3a1eb91636f261150dc00634e8ce9
             'Illuminate\\Contracts\\' => 21,
             'Illuminate\\Container\\' => 21,
         ),
+        'G' => 
+        array (
+            'GrahamCampbell\\ResultType\\' => 26,
+        ),
         'F' => 
         array (
             'Fig\\Http\\Message\\' => 17,
@@ -102,6 +108,7 @@ class ComposerStaticInite2c3a1eb91636f261150dc00634e8ce9
         ),
         'D' => 
         array (
+            'Dotenv\\' => 7,
             'Doctrine\\Inflector\\' => 19,
             'Doctrine\\Deprecations\\' => 22,
             'DI\\' => 3,
@@ -239,6 +246,10 @@ class ComposerStaticInite2c3a1eb91636f261150dc00634e8ce9
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'PhpOption\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
+        ),
         'PhpDocReader\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-di/phpdoc-reader/src/PhpDocReader',
@@ -246,6 +257,10 @@ class ComposerStaticInite2c3a1eb91636f261150dc00634e8ce9
         'PHPStan\\PhpDocParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'MyApp\\' => 
         array (
@@ -291,6 +306,10 @@ class ComposerStaticInite2c3a1eb91636f261150dc00634e8ce9
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
         ),
+        'GrahamCampbell\\ResultType\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
+        ),
         'Fig\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/http-message-util/src',
@@ -302,6 +321,10 @@ class ComposerStaticInite2c3a1eb91636f261150dc00634e8ce9
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
+        'Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
         'Doctrine\\Inflector\\' => 
         array (
