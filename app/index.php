@@ -366,11 +366,7 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
             <tr><td><br></td></tr>
             <tr style="font-size: 7.8; font-weight: normal; font-family:' . $fontnameBold .  '">
                 <td colspan="15">
-                    接受确认签署及盖章
-                </td>
-            </tr>
-            <tr>
-                <td colspan="12">
+                    接受确认签署及盖章<br>
                     <span style="padding-top: 100px; text-decoration: underline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 </td>
             </tr>
