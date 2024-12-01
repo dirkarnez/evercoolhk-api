@@ -74,21 +74,21 @@ $app->get('/email-testing', function (Request $request, Response $response, arra
     try {
         //Server settings
         # $mail->SMTPDebug = 2; // Enable verbose debug output
-        $mail->isSMTP(); // Set mailer to use SMTP
+        $mail->isMail(); // Set mailer to use SMTP
         $mail->Host = 'mail.hostcompany100.com'; // Specify SMTP server
         $mail->SMTPAuth = true; // Enable SMTP authentication
         $mail->Username = $_ENV['EMAIL_SENDER_ACCOUNT']; // SMTP username
         $mail->Password = $_ENV['EMAIL_SENDER_PASSWORD']; // SMTP password
-        $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587; // TCP port to connect to
         
-        $mail->SMTPOptions = array(
-            'ssl' => array(
-                'verify_peer' => false,
-                'verify_peer_name' => false,
-                'allow_self_signed' => true
-            )
-        );
+        // $mail->SMTPOptions = array(
+        //     'ssl' => array(
+        //         'verify_peer' => false,
+        //         'verify_peer_name' => false,
+        //         'allow_self_signed' => true
+        //     )
+        // );
         
         //Recipients
         $mail->setFrom($mail->Username, 'Test Sender');
