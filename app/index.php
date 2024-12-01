@@ -75,10 +75,10 @@ $app->get('/email-testing', function (Request $request, Response $response, arra
         //Server settings
         # $mail->SMTPDebug = 2; // Enable verbose debug output
         $mail->isSMTP(); // Set mailer to use SMTP
-        $mail->Host = 'smtp.gmail.com'; // Specify SMTP server
+        $mail->Host = 'mail.hostcompany100.com'; // Specify SMTP server
         $mail->SMTPAuth = true; // Enable SMTP authentication
-        $mail->Username = $_ENV['GMAIL_SENDER_ACCOUNT']; // SMTP username
-        $mail->Password = $_ENV['GMAIL_SENDER_PASSWORD']; // SMTP password
+        $mail->Username = $_ENV['EMAIL_SENDER_ACCOUNT']; // SMTP username
+        $mail->Password = $_ENV['EMAIL_SENDER_PASSWORD']; // SMTP password
         $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587; // TCP port to connect to
         
