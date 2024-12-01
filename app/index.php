@@ -299,20 +299,43 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
                 <td style="'. $styleForTable_Th_Td . '"></td>
             </tr>
         </tbody>
-    </table><br>
+    </table>
+    <br>
     <table cellpadding="2">
+        <thead>
+            <tr style="display: none; font-size: 7.8; font-weight: normal; font-family:' . $fontnameRegular .  ';">'
+                . $header("序号") 
+                . $header("机组编号") 
+                . $header("型号") 
+                . $header("送风量<br>l/s") 
+                . $header("新风量<br>l/s") 
+                . $header("机外<br>余压<br>(Pa)")
+                . $header("过滤器")
+                . $header("冷水盘<br>管排数<br>(Rows)")
+                . $header("制冷量<br>(KW)")
+                . $header("送风机")
+                . $header("EC风机<br>数量<br>（台）")
+                . $header("参考尺寸<br>(MM)<br>H * W * L")
+                . $header("机组单价<br>(HKD)")
+                . $header("机组数量")
+                . $header("小计<br>（HKD）") . '
+            </tr>
+        </thead>
         <tbody>
             <tr>
-                <td>
-                    <span style="text-decoration: underline;font-size: 7.8; font-weight: bold; font-family:' . $fontnameBold .  ';text-align: right;">
+                <td colspan="12"></td>
+                <td style="text-align: center">
+                    <span style="text-decoration: underline;font-size: 7.8; font-weight: bold; font-family:' . $fontnameBold .  ';text-align: center;">
                     合计
                     </span>
-                    &nbsp;&nbsp;
-                    <span style="text-decoration: underline;font-size: 7.8; font-weight: bold; font-family:' . $fontnameBold .  ';text-align: right;">
+                </td>
+                <td style="text-align: center">
+                    <span style="text-decoration: underline;font-size: 7.8; font-weight: bold; font-family:' . $fontnameBold .  ';text-align: center;">
                     10
                     </span>
-                    &nbsp;&nbsp;&nbsp;
-                    <span style="text-decoration: underline;font-size: 7.8; font-weight: bold; font-family:' . $fontnameBold .  ';text-align: right;">
+                </td>
+                <td style="text-align: center">
+                    <span style="text-decoration: underline;font-size: 7.8; font-weight: bold; font-family:' . $fontnameBold .  ';text-align: center;">
                     757,620
                     </span>
                 </td>
