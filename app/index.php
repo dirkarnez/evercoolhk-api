@@ -2,7 +2,7 @@
 
 /*
 (require __DIR__ . '/config/bootstrap.php')->run();*/
-
+require(__DIR__ . '/vendor/autoload.php');
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -15,8 +15,8 @@ use Money\Formatter\IntlMoneyFormatter;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-use Dotenv\Dotenv;
-
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 use MathPHP\NumericalAnalysis\Interpolation;
 
@@ -25,7 +25,7 @@ define ('K_PATH_IMAGES', __DIR__ . "/uploads/");
 
 ini_set('memory_limit', '-1');
 
-require(__DIR__ . '/vendor/autoload.php');
+
 
 $app = AppFactory::create();
 
@@ -69,9 +69,6 @@ class MyTCPDF extends TCPDF{
 }
 
 $app->get('/email-testing', function (Request $request, Response $response, array $args) {
-    $dotenv = Dotenv::createImmutable(__DIR__);
-    $dotenv->load();
-
     $mail = new PHPMailer(true); // Passing `true` enables exceptions
     
     try {
@@ -118,7 +115,7 @@ $app->get('/email-testing', function (Request $request, Response $response, arra
         $response->getBody()->write((string)json_encode('Message has been sent', JSON_PRETTY_PRINT));
         return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
     } catch (Exception $e) {
-        $response->getBody()->write((string)json_encode('Message could not be sent. Mailer Error: ', $mail->ErrorInfo, JSON_PRETTY_PRINT));
+        $response->getBody()->write((string)json_encode('Message could not be sent. Mailer Error: '. $mail->ErrorInfo, JSON_PRETTY_PRINT));
         return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
     }
 });
