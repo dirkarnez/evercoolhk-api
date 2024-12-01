@@ -507,6 +507,7 @@ $app->get('/calculate', function (Request $request, Response $response, array $a
 
 });
 
+
 $app->get('/[{name:.*}]', function ($request, $response, array $args) {
     $response->getBody()->write("404");
     return $response->withStatus(404); 
