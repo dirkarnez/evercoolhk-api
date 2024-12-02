@@ -11,6 +11,7 @@
     },
     "terminal.integrated.defaultProfile.windows": "Command Prompt",
     "php.validate.executablePath": "..\\laragon-php-8.0.0-mariadb-10.11.10-portable-v6.0.0\\bin\\php\\php-8.0.0-Win32-vs16-x64\\php.exe",
+    "php.debug.executablePath": "..\\laragon-php-8.0.0-mariadb-10.11.10-portable-v6.0.0\\bin\\php\\php-8.0.0-Win32-vs16-x64\\php.exe",
     "psalm.enableVerbose": true,
     "psalm.phpExecutablePath": "${env:USERPROFILE}\\Downloads\\laragon-php-8.0.0-mariadb-10.11.10-portable-v6.0.0\\bin\\php\\php-8.0.0-Win32-vs16-x64\\php.exe"
 }
