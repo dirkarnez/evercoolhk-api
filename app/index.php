@@ -15,8 +15,6 @@ use Money\Formatter\IntlMoneyFormatter;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
 
 use MathPHP\NumericalAnalysis\Interpolation;
 
@@ -69,8 +67,11 @@ class MyTCPDF extends TCPDF{
 }
 
 $app->get('/email-testing', function (Request $request, Response $response, array $args) {
-    $mail = new PHPMailer(true); // Passing `true` enables exceptions
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
     
+    $mail = new PHPMailer(true); // Passing `true` enables exceptions
+
     try {
         //Server settings
         # $mail->SMTPDebug = 2; // Enable verbose debug output
@@ -363,17 +364,26 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
                     备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：1.以上报价不含任何现场施工
                 </td>
             </tr>
+        </tbody>
+    </table>
+    <br>
+    <table cellpadding="2">
+        <tbody>
             <tr><td><br></td></tr>
-            <tr style="font-size: 7.8; font-weight: normal; font-family:' . $fontnameBold .  '">
+            <tr style="font-size: 7.8; font-weight: bold; font-family:' . $fontnameBold .  '">
                 <td colspan="15">
-                    接受确认签署及盖章<br>
-                    <span style="padding-top: 100px; text-decoration: underline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span>接受确认签署及盖章</span>   
+                </td>
+            </tr>
+            <tr style="font-size: 7.8; font-weight: normal; font-family:' . $fontnameRegular .  '">
+                <td colspan="15"><br><br><br>
+                    <span style="text-decoration: underline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>   
                 </td>
             </tr>
         </tbody>
     </table>
     ';
-
+        
 
     // output the HTML content
     $pdf->writeHTML($html, true, false, true, false, '');
