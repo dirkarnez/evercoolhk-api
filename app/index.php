@@ -352,7 +352,7 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
                     <span>备注:</span><br>
                     1) 采用EBM EC风机，配EC风机接线盒。配EC风机防护网。风机段配门限位开关，视窗以及检修灯。<br>
                     2) 盘管采用铜管/亲水铝片，SS304不锈钢端板。<br>
-                    3) 以上报价为净机组价钱，不包含控制。<br>
+                    3) 以上报价为净机组价钱，不包含控制。
                 </td> 
             </tr>
             <tr><td><br></td></tr>
@@ -369,19 +369,30 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
     <br>
     <table cellpadding="2">
         <tbody>
-            <tr><td><br></td></tr>
+            <tr>
+                <td><br></td>
+                <td><br></td>
+                <td><br></td>
+            </tr>
             <tr style="font-size: 7.8; font-weight: bold; font-family:' . $fontnameBold .  '">
-                <td colspan="15">
+                <td colspan="2">
                     <span>接受确认签署及盖章</span>   
+                </td>
+                <td>
+                    <span>东莞骏科空调制造有限公司</span>   
                 </td>
             </tr>
             <tr style="font-size: 7.8; font-weight: normal; font-family:' . $fontnameRegular .  '">
-                <td colspan="15"><br><br><br>
+                <td colspan="2"><br><br><br><br>
+                    <span style="text-decoration: underline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>   
+                </td>
+                <td><br><br><br><br>
                     <span style="text-decoration: underline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>   
                 </td>
             </tr>
         </tbody>
     </table>
+    
     ';
         
 
