@@ -195,11 +195,7 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
     // $pdf->MultiCell(55, 5, '[DEFAULT] '.$txt, 1, '', 0, 1, '', '', true);
 
     $header = function($name) use($styleForTable_Th_Td) {
-        return '<th align="center" style="'. $styleForTable_Th_Td . '">
-                    <div style="vertical-align: middle">
-                        <p>'. $name .'</p>
-                    </div>
-                </th>';
+        return '<th align="center" style="'. $styleForTable_Th_Td . '">'. $name .'</th>';
     };
     
     $html = '<table cellpadding="2" style="font-size: 7.8; font-weight: normal; font-family:' . $fontnameRegular .  '">
