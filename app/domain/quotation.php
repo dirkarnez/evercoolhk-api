@@ -1,3 +1,7 @@
+class Quotation {
+
+}
+
 class DomainObject
 {
 	private 序号; // A2
@@ -39,21 +43,21 @@ class DomainObject
 
 
 
-	private 型材; // AJ2
-	private 面板; // AK2
-	private 槽钢底架; // AL2
-	private 紧固件（结构*0.03~0.06）; // AM2
-	private 过滤器; // AN2
-	private 冷水盘管; // AO2
-	private 水盘（1）; // AP2
-	private 热水盘管; // AQ2
-	private 水盘（2）; // AR2
-	private 电加热; // AS2
-	private EC风机价格; // AT2
-	private DIDW/ACPLUG FAN 价格 ; // AU2
-	private TECO电机单价; // AV2
-	private EC风机接线盒; // AW2
-	private DIDW风机/电机减振及传送; // AX2
+	private profile; // AJ2 型材
+	private ; // AK2 面板
+	private ; // AL2 槽钢底架
+	private ; // AM2 紧固件（结构*0.03~0.06）
+	private ; // AN2 过滤器
+	private ; // AO2 冷水盘管
+	private ; // AP2 水盘（1）
+	private ; // AQ2 热水盘管
+	private ; // AR2 水盘（2）
+	private ; // AS2 电加热
+	private ; // AT2 EC风机价格
+	private ; // AU2 DIDW/ACPLUG FAN 价格
+	private ; // AV2 TECO电机单价
+	private ; // AW2 EC风机接线盒
+	private ; // AX2 DIDW风机/电机减振及传送
 	private 风阀; // AY2
 	private 镀锌止回阀; // AZ2
 	private U型热管; // BA2
@@ -72,6 +76,7 @@ class DomainObject
 	private 室外机; // BN2
 	private DDC控制; // BO2
 	private 其他; // BP2
+
 	// private 小计; // BQ2
 
 	private 包装费2%; // BR2
@@ -113,7 +118,7 @@ class DomainObject
 
 	private function get_宽() {
 		// =IFERROR(VLOOKUP($C2,功能段数据!$A:$E,COLUMN()-3,FALSE()),"")
-		return IFERROR(VLOOKUP($C2,功能段数据!$A:$E,COLUMN()-3,FALSE()),"")
+		return IFERROR(VLOOKUP($C2, 功能段数据!$A:$E,COLUMN()-3,FALSE()),"")
 	};
 
 	private function get_长() {
@@ -157,6 +162,13 @@ class DomainObject
 	};
 
 	private function get_型材() {
+        <!-- 
+        分段
+        2200
+        4200
+        6000 
+        -->
+
 		// =((G2-F2+H2)*4*(IF(I2>2200,2,1)+IF(I2>4200,1,0)+IF(I2>6000,1,0))+I2*4)*1.2/1000
 		return ((G2-F2+H2)*4*(IF(I2>2200,2,1)+IF(I2>4200,1,0)+IF(I2>6000,1,0))+I2*4)*1.2/1000
 	};
