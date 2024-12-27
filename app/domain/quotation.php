@@ -58,8 +58,8 @@ class DomainObject
 	private ; // AV2 TECO电机单价
 	private ; // AW2 EC风机接线盒
 	private ; // AX2 DIDW风机/电机减振及传送
-	private 风阀; // AY2
-	private 镀锌止回阀; // AZ2
+	private ; // AY2 风阀
+	private ; // AZ2 镀锌止回阀
 	private U型热管; // BA2
 	private 转轮; // BB2
 	private 加湿器; // BC2
