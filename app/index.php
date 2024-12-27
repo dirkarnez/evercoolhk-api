@@ -23,8 +23,6 @@ define ('K_PATH_IMAGES', __DIR__ . "/uploads/");
 
 ini_set('memory_limit', '-1');
 
-
-
 $app = AppFactory::create();
 
 if (str_contains($_SERVER['SERVER_NAME'], 'evercoolhk.com')) { 
@@ -39,6 +37,16 @@ function takesAnInt(int $i) {
 }
 
 takesAnInt(0);
+
+function writeJSON(Response $response, int $statusCode, mixed $contentToEncode) {
+    $response->getBody()->write((string)json_encode($contentToEncode, JSON_PRETTY_PRINT));
+    return $response->withHeader('Content-Type', 'application/json')->withStatus($statusCode);
+}
+
+$app->get('/hi', function (Request $request, Response $response, array $args) {
+    
+    return writeJSON($response, 200, "h!!!iii");
+});
 
 $app->get('/names/{name}', function (Request $request, Response $response, array $args) {
     $name = $args['name'];
@@ -120,6 +128,7 @@ $app->get('/email-testing', function (Request $request, Response $response, arra
         return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
     }
 });
+
 $app->get('/pdf', function (Request $request, Response $response, array $args) {
     // create new PDF document
     $pdf = new MyTCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
