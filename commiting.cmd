@@ -10,5 +10,4 @@ git add * &&^
 git commit -m "- upload files" &&^
 git push -u origin main && goto end
 
-
 pause
