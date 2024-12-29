@@ -1,0 +1,294 @@
+[
+    {
+        "header_name": "序号",
+        "variable_name": ""
+    },
+    {
+        "header_name": "AHU编号",
+        "variable_name": ""
+    },
+    {
+        "header_name": "功能段",
+        "variable_name": ""
+    },
+    {
+        "header_name": "实际风量(M3/H)",
+        "variable_name": ""
+    },
+    {
+        "header_name": "最大风量(M3/H)",
+        "variable_name": ""
+    },
+    {
+        "header_name": "底座高度",
+        "variable_name": ""
+    },
+    {
+        "header_name": "高",
+        "variable_name": ""
+    },
+    {
+        "header_name": "宽",
+        "variable_name": ""
+    },
+    {
+        "header_name": "长",
+        "variable_name": ""
+    },
+    {
+        "header_name": "风机型号",
+        "variable_name": ""
+    },
+    {
+        "header_name": "电机品牌",
+        "variable_name": ""
+    },
+    {
+        "header_name": "电机/TECO IE3",
+        "variable_name": ""
+    },
+    {
+        "header_name": "EC风机数量",
+        "variable_name": ""
+    },
+    {
+        "header_name": "DIDW风机数量",
+        "variable_name": ""
+    },
+    {
+        "header_name": "冷水盘管排数",
+        "variable_name": ""
+    },
+    {
+        "header_name": "热水盘管排数",
+        "variable_name": ""
+    },
+    {
+        "header_name": "电加热功率kw",
+        "variable_name": ""
+    },
+    {
+        "header_name": "型材",
+        "variable_name": ""
+    },
+    {
+        "header_name": "面板",
+        "variable_name": ""
+    },
+    {
+        "header_name": "条）",
+        "variable_name": ""
+    },
+    {
+        "header_name": "盘管迎风面积",
+        "variable_name": ""
+    },
+    {
+        "header_name": "过滤器数量",
+        "variable_name": ""
+    },
+    {
+        "header_name": "水盘面积",
+        "variable_name": ""
+    },
+    {
+        "header_name": "铝合金风阀面积",
+        "variable_name": ""
+    },
+    {
+        "header_name": "型材定价60mm铝合金",
+        "variable_name": ""
+    },
+    {
+        "header_name": "面板定价50MM(PU)0.8MM+0.6MM GI",
+        "variable_name": ""
+    },
+    {
+        "header_name": "槽钢底架定价（条）",
+        "variable_name": ""
+    },
+    {
+        "header_name": "盘管定价铜管/亲水铝片0.41+0.13",
+        "variable_name": ""
+    },
+    {
+        "header_name": "盘管定价(其它情况)",
+        "variable_name": ""
+    },
+    {
+        "header_name": "过滤器定价（G4+F7袋式）",
+        "variable_name": ""
+    },
+    {
+        "header_name": "SS304水盘定价",
+        "variable_name": ""
+    },
+    {
+        "header_name": "电加热定价(180~200元/m2）",
+        "variable_name": ""
+    },
+    {
+        "header_name": "风阀定价1560元/m2",
+        "variable_name": ""
+    },
+    {
+        "header_name": "型材",
+        "variable_name": ""
+    },
+    {
+        "header_name": "面板",
+        "variable_name": ""
+    },
+    {
+        "header_name": "槽钢底架",
+        "variable_name": ""
+    },
+    {
+        "header_name": "紧固件（结构*0.03~0.06）",
+        "variable_name": ""
+    },
+    {
+        "header_name": "过滤器",
+        "variable_name": ""
+    },
+    {
+        "header_name": "冷水盘管",
+        "variable_name": ""
+    },
+    {
+        "header_name": "水盘（1）",
+        "variable_name": ""
+    },
+    {
+        "header_name": "热水盘管",
+        "variable_name": ""
+    },
+    {
+        "header_name": "水盘（2）",
+        "variable_name": ""
+    },
+    {
+        "header_name": "电加热",
+        "variable_name": ""
+    },
+    {
+        "header_name": "EC风机价格",
+        "variable_name": ""
+    },
+    {
+        "header_name": "DIDW/ACPLUG FAN 价格 ",
+        "variable_name": ""
+    },
+    {
+        "header_name": "TECO电机单价",
+        "variable_name": ""
+    },
+    {
+        "header_name": "EC风机接线盒",
+        "variable_name": ""
+    },
+    {
+        "header_name": "DIDW风机/电机减振及传送",
+        "variable_name": ""
+    },
+    {
+        "header_name": "风阀",
+        "variable_name": ""
+    },
+    {
+        "header_name": "镀锌止回阀",
+        "variable_name": ""
+    },
+    {
+        "header_name": "U型热管",
+        "variable_name": ""
+    },
+    {
+        "header_name": "转轮",
+        "variable_name": ""
+    },
+    {
+        "header_name": "加湿器",
+        "variable_name": ""
+    },
+    {
+        "header_name": "电加热",
+        "variable_name": ""
+    },
+    {
+        "header_name": "UV灯",
+        "variable_name": ""
+    },
+    {
+        "header_name": "热回收系统",
+        "variable_name": ""
+    },
+    {
+        "header_name": "热泵功能",
+        "variable_name": ""
+    },
+    {
+        "header_name": "排风段结构",
+        "variable_name": ""
+    },
+    {
+        "header_name": "排风段风机",
+        "variable_name": ""
+    },
+    {
+        "header_name": "排风段过滤器",
+        "variable_name": ""
+    },
+    {
+        "header_name": "一体式设备仓",
+        "variable_name": ""
+    },
+    {
+        "header_name": "一体式电控",
+        "variable_name": ""
+    },
+    {
+        "header_name": "一体式管路",
+        "variable_name": ""
+    },
+    {
+        "header_name": "室外机",
+        "variable_name": ""
+    },
+    {
+        "header_name": "DDC控制",
+        "variable_name": ""
+    },
+    {
+        "header_name": "其他",
+        "variable_name": ""
+    },
+    {
+        "header_name": "小计",
+        "variable_name": ""
+    },
+    {
+        "header_name": "包装费2%",
+        "variable_name": ""
+    },
+    {
+        "header_name": "机组体积",
+        "variable_name": ""
+    },
+    {
+        "header_name": "港澳地区运费最低1500RMB/台",
+        "variable_name": ""
+    },
+    {
+        "header_name": "总价RMB",
+        "variable_name": ""
+    },
+    {
+        "header_name": "港币Currency：HKD/RMB=0.9",
+        "variable_name": ""
+    },
+    {
+        "header_name": "取整HKD",
+        "variable_name": ""
+    }
+]
