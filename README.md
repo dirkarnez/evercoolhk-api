@@ -2,6 +2,9 @@ evercoolhk-api
 ==============
 ### Notes
 - php version: `7.4`, `FPM with OPcache`
+- 功能段数据
+- 机组功能段
+- 风机电机定价
 
 ### Backing Up
 - ```cmd
