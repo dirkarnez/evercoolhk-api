@@ -8,7 +8,7 @@ echo committing &&^
 git config --global credential.helper "" &&^
 git add * &&^
 git commit -m "- upload files" &&^
-git push -u origin main
-goto end
+git push -u origin main && goto end
+
 
 pause
