@@ -27,6 +27,14 @@ function takesAnInt(int $i) {
 
 takesAnInt(0);
 
+function enableCORS(Response $response) {
+    return $response
+        ->withHeader('Content-Type', 'application/json')
+        ->withHeader('Access-Control-Allow-Origin', '*')
+        ->withHeader('Access-Control-Allow-Headers', '*')
+        ->withHeader('Access-Control-Allow-Methods', '*');
+}
+
 function writeJSON(Response $response, int $statusCode, mixed $contentToEncode) {
     $response->getBody()->write((string)json_encode($contentToEncode, JSON_PRETTY_PRINT));
     return $response->withHeader('Content-Type', 'application/json')->withStatus($statusCode);
