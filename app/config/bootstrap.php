@@ -13,6 +13,9 @@ define ('K_PATH_IMAGES', __DIR__ . "/uploads/");
 
 ini_set('memory_limit', '-1');
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 // $containerBuilder = new ContainerBuilder();
 // $containerBuilder->addDefinitions(__DIR__ . '/container.php');
 // $container = $containerBuilder->build();
