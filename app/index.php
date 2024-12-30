@@ -441,7 +441,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
     return enableCORS($response->withHeader('Content-Type', 'application/pdf')->withStatus(200));
     */
     return enableCORS(
-        writePDF(
+        writeJSON(
             $response, 
             200, 
             $pdf->Output('123', 'I')
