@@ -157,10 +157,8 @@ $app->get('/email-testing', function (Request $request, Response $response, arra
 });
 
 $app->post('/pdf', function (Request $request, Response $response, array $args) {
-    $parsedBody = $request->getParsedBody();
-    
     $params = (array)$request->getParsedBody();
-    
+
     // create new PDF document
     $pdf = new MyTCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -445,7 +443,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
         writeJSON(
             $response, 
             200, 
-            $parsedBody->model//$pdf->Output('123', 'S')
+            $ $params ->model//$pdf->Output('123', 'S')
         )
     );
 });
