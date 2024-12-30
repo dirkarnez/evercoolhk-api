@@ -154,6 +154,7 @@ $app->get('/email-testing', function (Request $request, Response $response, arra
 $app->post('/pdf', function (Request $request, Response $response, array $args) {
     // $parsedBody = $request->getParsedBody();
     
+    /*
     // create new PDF document
     $pdf = new MyTCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -430,7 +431,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
 
     // ---------------------------------------------------------
     $response->getBody()->write($pdf->Output('123', 'I'));
-    return enableCORS($response->withHeader('Content-Type', 'application/pdf')->withStatus(200));
+    return enableCORS($response->withHeader('Content-Type', 'application/pdf')->withStatus(200));*/
 });
 
 $app->get('/calculate', function (Request $request, Response $response, array $args) {
