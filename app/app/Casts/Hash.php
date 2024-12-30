@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
  
 class Hash implements Castable
 {
-    public static function castUsing(array $arguments): string
+    public static function castUsing()
     {
         return "123x";
     }
