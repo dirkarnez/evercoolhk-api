@@ -436,8 +436,17 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
     $pdf->writeHTML($html, true, false, true, false, '');
 
     // ---------------------------------------------------------
+    /*
     $response->getBody()->write($pdf->Output('123', 'I'));
-    return enableCORS($response->withHeader('Content-Type', 'application/pdf')->withStatus(200));*/
+    return enableCORS($response->withHeader('Content-Type', 'application/pdf')->withStatus(200));
+    */
+    enableCORS(
+        writePDF(
+            $response, 
+            200, 
+            $pdf->Output('123', 'I')
+        )
+    );
 });
 
 $app->get('/calculate', function (Request $request, Response $response, array $args) {
