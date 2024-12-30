@@ -317,7 +317,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
         </thead>
         <tbody>' .
             implode("", 
-                array_map(function(int $value) use ($styleForTable_Th_Td) {
+                array_map(function(int $item) use ($styleForTable_Th_Td) {
                     return '<tr>
                         <td style="'. $styleForTable_Th_Td . '"></td>
                         <td style="'. $styleForTable_Th_Td . '"></td>
