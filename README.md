@@ -20,15 +20,14 @@ evercoolhk-api
 - [dirkarnez/eloquent-wrapper](https://github.com/dirkarnez/eloquent-wrapper)
   
 ### Testing out
-- Largon: http://localhost:80/names/hello
-- Docker: http://localhost:8000/names/hello
+- Largon / Largon: http://localhost:8000/names/hello
 - https://evercoolhk.com/api/names/hello
  
 
 ### Localhost for [laragon-portable](https://github.com/dirkarnez/laragon-portable)
 ```nginx
 server {
-    listen 80 default_server;
+    listen 8000 default_server;
     server_name localhost ;
     root "C:/Users/Administrator/Downloads/evercoolhk-api/app/";
     

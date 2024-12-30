@@ -16,6 +16,7 @@ use PHPMailer\PHPMailer\Exception;
 use MyApp\Models\AHUModel;
 
 use MathPHP\NumericalAnalysis\Interpolation;
+use Illuminate\Database\Eloquent\Collection;
 
 
 /**
@@ -29,7 +30,6 @@ takesAnInt(0);
 
 function enableCORS(Response $response) {
     return $response
-        ->withHeader('Content-Type', 'application/json')
         ->withHeader('Access-Control-Allow-Origin', '*')
         ->withHeader('Access-Control-Allow-Headers', '*')
         ->withHeader('Access-Control-Allow-Methods', '*');
@@ -42,24 +42,26 @@ function writeJSON(Response $response, int $statusCode, mixed $contentToEncode) 
 
 $app->get('/model', function (Request $request, Response $response, array $args) {
     $queryParams = $request->getQueryParams();
+    $collection = [];
+
     if (isset($queryParams['actual_air_volume'])) {
         $actualAirVolume = (int)$queryParams['actual_air_volume'];
         // select * from ahu_models where `maximum_air_volume` > 14900 ORDER BY `maximum_air_volume` LIMIT 2;
-        return enableCORS(writeJSON(
-            $response, 
-            200, 
-            AHUModel::where('maximum_air_volume', '>', $actualAirVolume)
-                ->orderBy("maximum_air_volume")
-                ->limit(2)
-                ->get()
-            ));
+        $collection = AHUModel::where('maximum_air_volume', '>', $actualAirVolume)
+            ->orderBy("maximum_air_volume")
+            ->limit(2)
+            ->get();
     } else {
-        return enableCORS(writeJSON(
+        $collection = AHUModel::all();
+    }
+
+    return enableCORS(
+        writeJSON(
             $response, 
             200, 
-            AHUModel::all()
-        ));
-    }
+            $collection
+        )
+    );
     
 
 

@@ -3,5 +3,5 @@
 @REM SET DB_USERNAME=user
 @echo off
 
-docker compose up --build && docker compose down
+docker compose up --build && echo cleaning && docker compose down
 pause
