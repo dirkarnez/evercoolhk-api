@@ -69,7 +69,7 @@ $app->get('/email-testing', function (Request $request, Response $response, arra
         //Server settings
         # $mail->SMTPDebug = 2; // Enable verbose debug output
         $mail->isMail(); // Set mailer to use SMTP
-        $mail->Host = 'mail.hostcompany100.com'; // Specify SMTP server
+        $mail->Host = $_ENV['EMAIL_HOST']; // Specify SMTP server
         $mail->SMTPAuth = true; // Enable SMTP authentication
         $mail->Username = $_ENV['EMAIL_SENDER_ACCOUNT']; // SMTP username
         $mail->Password = $_ENV['EMAIL_SENDER_PASSWORD']; // SMTP password
