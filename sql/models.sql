@@ -24,7 +24,7 @@ CREATE TABLE ahu_models (
     fan_section	VARCHAR(512), -- 风机段
     flow_equalization_section	INT, --均流段
     empty_section	INT, -- 空段
-    high_efficiency_filter_section	INT,
+    high_efficiency_filter_section	INT, -- 高效过滤段
     supply_air_section	INT
 );
 
