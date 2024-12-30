@@ -315,7 +315,8 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
                 . $header("小计<br>（HKD）") . '
             </tr>
         </thead>
-        <tbody>
+        <tbody>' .
+            $body[0]->model
             <tr>
                 <td style="'. $styleForTable_Th_Td . '"></td>
                 <td style="'. $styleForTable_Th_Td . '"></td>
@@ -333,7 +334,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
                 <td style="'. $styleForTable_Th_Td . '"></td>
                 <td style="'. $styleForTable_Th_Td . '"></td>
             </tr>
-        </tbody>
+        . ' </tbody>
     </table>
     <br>
     <table cellpadding="2">
