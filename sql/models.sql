@@ -24,8 +24,8 @@ CREATE TABLE ahu_models (
     fan_section	VARCHAR(512),
     flow_equalization_section	INT,
     empty_section	INT,
-    x	INT,
-    y	INT
+    high_efficiency_filter_section	INT,
+    supply_air_section	INT
 );
 
 INSERT INTO tableName (model, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y) VALUES
