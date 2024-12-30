@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS tableName;
+DROP TABLE IF EXISTS ahu_models;
 
-CREATE TABLE tableName (
+CREATE TABLE ahu_models (
     model	VARCHAR(512),
     b	INT,
     c	INT,
