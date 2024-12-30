@@ -31,7 +31,11 @@ function writeJSON(Response $response, int $statusCode, mixed $contentToEncode) 
     return $response->withHeader('Content-Type', 'application/json')->withStatus($statusCode);
 }
 
-function writePDF(Response $response, int $statusCode, mixed $contentToEncode) {
+
+$response->getBody()->write();
+return enableCORS($response->withHeader('Content-Type', 'application/pdf')->withStatus(200));*/
+
+function writePDF(Response $response, int $statusCode, mixed $content) {
     $response->getBody()->write((string)json_encode($contentToEncode, JSON_PRETTY_PRINT));
     return $response->withHeader('Content-Type', 'application/json')->withStatus($statusCode);
 }
