@@ -445,7 +445,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
         writePDF(
             $response, 
             200, 
-            $pdf->Output('123', 'S')
+            $pdf->Output('123', 'I')
         )
     );
 });
