@@ -15,6 +15,13 @@ ini_set('memory_limit', '-1');
 // $containerBuilder->addDefinitions(__DIR__ . '/container.php');
 // $container = $containerBuilder->build();
 
+// Create Container using PHP-DI
+$container = new Container();
+
+// Set container to create App with on AppFactory
+AppFactory::setContainer($container);
+$app = AppFactory::create();
+
 // $app = $container->get(App::class);
 // $app->setBasePath('/api');
 
