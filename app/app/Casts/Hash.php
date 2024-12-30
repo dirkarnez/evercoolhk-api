@@ -5,7 +5,7 @@ namespace MyApp\Casts;
 use Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes;
 use Illuminate\Database\Eloquent\Model;
  
-class Hash implements CastsInboundAttributes
+class Hash implements Castable
 {
     /**
      * Prepare the given value for storage.
