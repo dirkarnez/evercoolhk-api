@@ -320,7 +320,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
                 array_map(function($item) use ($styleForTable_Th_Td) {
                     return '<tr>
                         <td style="'. $styleForTable_Th_Td . '"></td>
-                        <td style="'. $styleForTable_Th_Td . '"></td>
+                        <td style="'. $styleForTable_Th_Td . '">' . $item->model . '</td>
                         <td style="'. $styleForTable_Th_Td . '"></td>
                         <td style="'. $styleForTable_Th_Td . '"></td>
                         <td style="'. $styleForTable_Th_Td . '"></td>
