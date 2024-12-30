@@ -25,6 +25,7 @@ class Hash implements Castable
                 //     'address_line_one' => $value->lineOne,
                 //     'address_line_two' => $value->lineTwo,
                 // ];
+                return "344";
             }
         };
     }
