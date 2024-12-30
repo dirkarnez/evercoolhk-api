@@ -443,7 +443,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
         writeJSON(
             $response, 
             200, 
-            $params["model"]//$pdf->Output('123', 'S')
+            $params[0]["model"]//$pdf->Output('123', 'S')
         )
     );
 });
