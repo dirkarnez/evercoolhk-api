@@ -334,7 +334,9 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
                 <td style="'. $styleForTable_Th_Td . '"></td>
                 <td style="'. $styleForTable_Th_Td . '"></td>
             </tr>
-            array_map('cube', $$body);
+            array_map(function(int $value): int {
+                return $value * 2;
+            };, $$body);
         . ' </tbody>
     </table>
     <br>
