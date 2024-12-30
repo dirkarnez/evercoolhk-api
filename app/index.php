@@ -163,6 +163,7 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
     );
 });
 
+/*
 (function() {
     
     // create new PDF document
@@ -443,6 +444,8 @@ $app->get('/pdf', function (Request $request, Response $response, array $args) {
     $response->getBody()->write($pdf->Output('123', 'I'));
     return $response->withHeader('Content-Type', 'application/pdf')->withStatus(200);
 });
+
+*/
 
 $app->get('/calculate', function (Request $request, Response $response, array $args) {
     // $points = [[0, sqrt(0)], [2, sqrt(2)], [3, sqrt(3)], [4, sqrt(4)]];
