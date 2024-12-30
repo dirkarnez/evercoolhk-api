@@ -444,7 +444,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
         writeJSON(
             $response, 
             200, 
-            json_encode($parsedBody)//$pdf->Output('123', 'S')
+            print_r($parsedBody)//$pdf->Output('123', 'S')
         )
     );
 });
