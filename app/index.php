@@ -160,7 +160,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
     // $parsedBody = $request->getParsedBody();
     
     return enableCORS(
-        writeJSON(
+        writePDF(
             $response, 
             200, 
             "32 "
