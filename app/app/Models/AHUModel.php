@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AHUModel extends Model
 {
-    protected $table = 'areas';
+    protected $table = 'ahu_models';
 
     public function projects()
     {
