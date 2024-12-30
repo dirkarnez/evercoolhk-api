@@ -319,7 +319,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
             implode("", 
                 array_map(function(mixed $item) use ($styleForTable_Th_Td): string {
                     return '<tr>
-                        <td style="'. $styleForTable_Th_Td . '"></td>
+                        <td style="'. $styleForTable_Th_Td . '">$item["model"]</td>
                         <td style="'. $styleForTable_Th_Td . '">' . $item["model"] . '</td>
                         <td style="'. $styleForTable_Th_Td . '"></td>
                         <td style="'. $styleForTable_Th_Td . '"></td>
