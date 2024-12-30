@@ -152,13 +152,13 @@ $app->get('/email-testing', function (Request $request, Response $response, arra
 });
 
 $app->get('/pdf', function (Request $request, Response $response, array $args) {
-    //$parsedBody = $request->getParsedBody();
+    $parsedBody = $request->getParsedBody();
 
     return enableCORS(
         writeJSON(
             $response, 
             200, 
-            "1234"
+            $parsedBody
         )
     );
 });
