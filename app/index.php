@@ -34,9 +34,9 @@ function writeJSON(Response $response, int $statusCode, mixed $contentToEncode) 
 
 $app->get('/hi', function (Request $request, Response $response, array $args) {
     $queryParams = $request->getQueryParams();
-    // if (isset($queryParams['actual_air_volume'])) {
-
-    // }
+    if (isset($queryParams['actual_air_volume'])) {
+        $randomCount = (int)$queryParams['random_count'];
+    }
     // select * from ahu_models where `maximum_air_volume` > 14900 ORDER BY `maximum_air_volume` LIMIT 2;
     $actualAirVolume = isset($queryParams['actual_air_volume']) ? ;
 
