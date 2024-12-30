@@ -32,7 +32,7 @@ function writeJSON(Response $response, int $statusCode, mixed $contentToEncode) 
     return $response->withHeader('Content-Type', 'application/json')->withStatus($statusCode);
 }
 
-$app->get('/hi', function (Request $request, Response $response, array $args) {
+$app->get('/model', function (Request $request, Response $response, array $args) {
     $queryParams = $request->getQueryParams();
     if (isset($queryParams['actual_air_volume'])) {
         $actualAirVolume = (int)$queryParams['actual_air_volume'];
