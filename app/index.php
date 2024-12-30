@@ -31,6 +31,11 @@ function writeJSON(Response $response, int $statusCode, mixed $contentToEncode) 
     return $response->withHeader('Content-Type', 'application/json')->withStatus($statusCode);
 }
 
+function writePDF(Response $response, int $statusCode, mixed $contentToEncode) {
+    $response->getBody()->write((string)json_encode($contentToEncode, JSON_PRETTY_PRINT));
+    return $response->withHeader('Content-Type', 'application/json')->withStatus($statusCode);
+}
+
 $app->get('/model', function (Request $request, Response $response, array $args) {
     $queryParams = $request->getQueryParams();
     $collection = [];
