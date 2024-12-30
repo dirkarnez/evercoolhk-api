@@ -25,7 +25,7 @@ CREATE TABLE ahu_models (
     flow_equalization_section	INT, --均流段
     empty_section	INT, -- 空段
     high_efficiency_filter_section	INT, -- 高效过滤段
-    supply_air_section	INT
+    supply_air_section	INT --送风段
 );
 
 INSERT INTO tableName (model, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y) VALUES
