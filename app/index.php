@@ -49,6 +49,8 @@ $app->get('/hi', function (Request $request, Response $response, array $args) {
         return writeJSON(
             $response, 
             200, 
+            AHUModel::all()
+        );
     }
     
 
