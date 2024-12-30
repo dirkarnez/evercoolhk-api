@@ -3,8 +3,7 @@
 namespace MyApp\Casts;
  
 use Illuminate\Contracts\Database\Eloquent\Castable;
-use Illuminate\Contracts\Database\Eloquent\Castable;
-CastsAttributes
+use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
  
 class Hash implements Castable
