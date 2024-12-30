@@ -440,10 +440,10 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
     */
     // 
     return enableCORS(
-        writeJSON(
+        writePDF(
             $response, 
             200, 
-            $body[0]->model//$pdf->Output('123', 'S')
+            //$pdf->Output('123', 'S')
         )
     );
 });
