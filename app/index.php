@@ -23,7 +23,7 @@ function enableCORS(Response $response) {
     return $response
         ->withHeader('Access-Control-Allow-Origin', '*')
         ->withHeader('Access-Control-Allow-Headers', '*')
-        ->withHeader('Access-Control-Allow-Methods', '*');
+        ->withHeader('Access-Control-Allow-Methods', 'GET, POST, OPTION');
 }
 
 function writeJSON(Response $response, int $statusCode, mixed $contentToEncode) {
