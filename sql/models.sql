@@ -22,8 +22,8 @@ CREATE TABLE ahu_models (
     straight_plate_heat_pipe_section_standard_length_requires_flow_equalization_section	INT,
     humidification_section	INT,
     fan_section	VARCHAR(512),
-    v	INT,
-    w	INT,
+    flow_equalization_section	INT,
+    empty_section	INT,
     x	INT,
     y	INT
 );
