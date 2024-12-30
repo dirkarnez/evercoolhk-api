@@ -3,7 +3,7 @@
 namespace MyApp\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Model;
 class AHUModel extends Model
 {
     protected $table = 'ahu_models';
