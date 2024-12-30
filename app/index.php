@@ -40,10 +40,10 @@ $app->get('/hi', function (Request $request, Response $response, array $args) {
     // select * from ahu_models where `maximum_air_volume` > 14900 ORDER BY `maximum_air_volume` LIMIT 2;
     $actualAirVolume = 14900;
 
-    AHUModel::where('maximum_air_volume', '>', $actualAirVolume)
-        ->orderBy("maximum_air_volume")
-        ->limit(2)
-        ->get();
+    // AHUModel::where('maximum_air_volume', '>', $actualAirVolume)
+    //     ->orderBy("maximum_air_volume")
+    //     ->limit(2)
+    //     ->get();
 
     //     if (isset($queryParams['random_count'])) {
     //         $randomCount = (int)$queryParams['random_count'];
@@ -54,10 +54,12 @@ $app->get('/hi', function (Request $request, Response $response, array $args) {
     //         }
 
 
-    return writeJSON($response, 200, AHUModel::where('maximum_air_volume', '>', $actualAirVolume)
-    ->orderBy("maximum_air_volume")
-    ->limit(2)
-    ->get());
+    return writeJSON($response, 200, 
+        AHUModel::where('maximum_air_volume', '>', $actualAirVolume)
+        ->orderBy("maximum_air_volume")
+        ->limit(2)
+        ->get()
+    );
 });
 
 $app->get('/names/{name}', function (Request $request, Response $response, array $args) {
