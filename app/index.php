@@ -157,8 +157,8 @@ $app->get('/email-testing', function (Request $request, Response $response, arra
 });
 
 $app->post('/pdf', function (Request $request, Response $response, array $args) {
-    $parsedBody = $request->getBody();
-    
+    $parsedBody = $request->getParsedBody();
+    $request->()
     
     
     // create new PDF document
