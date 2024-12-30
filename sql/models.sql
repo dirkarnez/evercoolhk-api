@@ -19,7 +19,7 @@ CREATE TABLE ahu_models (
     electric_heating_section	INT, -- 电加热段
     activated_carbon_filter_section	INT, -- 活性炭过滤段
     heat_recycle_wheel_section	INT, -- 热回收轮段(标准)（另需要配均流段）
-    straight_plate_heat_pipe_section_standard_length_requires_flow_equalization_section	INT, -- 直板热管段（标准段长）（另需要配均流段）
+    straight_plate_heat_pipe_section	INT, -- 直板热管段（标准段长）（另需要配均流段）
     humidification_section	INT, -- 加湿段
     fan_section	VARCHAR(512), -- 风机段
     flow_equalization_section	INT, --均流段
