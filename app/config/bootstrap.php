@@ -1,6 +1,7 @@
 <?php
 
 use DI\ContainerBuilder;
+use DI\Container;
 use Slim\App;
 use \Illuminate\Database\Capsule\Manager as Capsule;
 
