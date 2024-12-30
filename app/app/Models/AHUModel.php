@@ -18,3 +18,35 @@ class AHUModel extends Model
 //     }
 }
 ?>
+
+
+
+<?php
+
+namespace App\Casts;
+ 
+use Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes;
+use Illuminate\Database\Eloquent\Model;
+ 
+class Hash implements CastsInboundAttributes
+{
+    /**
+     * Create a new cast class instance.
+     */
+    public function __construct(
+        protected string|null $algorithm = null,
+    ) {}
+ 
+    /**
+     * Prepare the given value for storage.
+     *
+     * @param  array<string, mixed>  $attributes
+     */
+    public function set(Model $model, string $key, mixed $value, array $attributes): string
+    {
+        return is_null($this->algorithm)
+                    ? bcrypt($value)
+                    : hash($this->algorithm, $value);
+    }
+}
+?>
