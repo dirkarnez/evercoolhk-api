@@ -316,7 +316,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
             </tr>
         </thead>
         <tbody>' .
-            array_map(function(int $value): int {
+            array_map(function(int $value): string {
                 return $value * 2;
             }, $$body);
         . ' </tbody>
