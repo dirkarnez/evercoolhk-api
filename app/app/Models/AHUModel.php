@@ -42,7 +42,8 @@ class Hash implements CastsInboundAttributes
      *
      * @param  array<string, mixed>  $attributes
      */
-    public function set(Model $model, string $key, mixed $value, array $attributes): string
+    public function set($model, string $key, $value, array $attributes);
+    public function set($model, string $key, mixed $value, array $attributes):
     {
         return "123";
         // return is_null($this->algorithm)
