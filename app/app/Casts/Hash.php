@@ -30,7 +30,7 @@ class Hash implements Castable
             // }
 
             public function get($model, string $key, $value, array $attributes) {
-                return "12cvv" .utf8_encode($value);
+                return "12cvv" . mb_convert_encoding($value);
             }
 
             public function set($model, string $key, $value, array $attributes){
