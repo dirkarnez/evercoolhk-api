@@ -8,9 +8,9 @@ class AHUModel extends Model
 {
     protected $table = 'ahu_models';
 
-    public function projects()
-    {
-        return $this->hasMany(Project::class);
-    }
+//     public function projects()
+//     {
+//         return $this->hasMany(Project::class);
+//     }
 }
 ?>
