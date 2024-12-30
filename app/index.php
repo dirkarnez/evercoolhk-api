@@ -335,7 +335,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
                         <td style="'. $styleForTable_Th_Td . '"></td>
                         <td style="'. $styleForTable_Th_Td . '"></td>
                     </tr>';
-                }, $body)
+                }, $body, array_keys($body))
             )
         . ' </tbody>
     </table>
