@@ -14,8 +14,8 @@ CREATE TABLE ahu_models (
     primary_plate_medium_efficiency_filter_section	INT, -- 初+板式中效过滤段
     box_medium_efficiency_filter_section	INT, -- 箱式中效过滤段 
     primary_box_medium_efficiency_filter_section	INT, -- 初+箱式中效过滤段
-    cooling_coil_section	INT,
-    heating_section	INT,
+    cooling_coil_section	INT, -- 表冷段
+    heating_section	INT, -- 加热段
     electric_heating_section	INT,
     activated_carbon_filter_section	INT,
     heat_recovery_wheel_section_standard_requires_flow_equalization_section	INT,
