@@ -52,13 +52,13 @@ $app->get('/model', function (Request $request, Response $response, array $args)
                 ->orderBy("maximum_air_volume")
                 ->limit(2)
                 ->get()
-            )(;
+            ));
     } else {
-        return writeJSON(
+        return enableCORS(writeJSON(
             $response, 
             200, 
             AHUModel::all()
-        );
+        ));
     }
     
 
