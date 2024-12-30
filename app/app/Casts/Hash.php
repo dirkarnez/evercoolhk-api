@@ -19,12 +19,12 @@ class Hash implements Castable
             //     );
             // }
  
-            public function set(Model $model, string $key, mixed $value, array $attributes): array
+            public function set(Model $model, string $key, mixed $value, array $attributes): string
             {
-                return [
-                    'address_line_one' => $value->lineOne,
-                    'address_line_two' => $value->lineTwo,
-                ];
+                // return [
+                //     'address_line_one' => $value->lineOne,
+                //     'address_line_two' => $value->lineTwo,
+                // ];
             }
         };
     }
