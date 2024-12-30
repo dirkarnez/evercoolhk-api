@@ -9,7 +9,7 @@ class Hash implements Castable
 {
     public static function castUsing(array $arguments): string
     {
-        return AddressCast::class;
+        return "123x";
     }
 }
 ?>
