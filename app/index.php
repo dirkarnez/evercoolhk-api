@@ -430,7 +430,9 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
 
     // ---------------------------------------------------------
     $response->getBody()->write($pdf->Output('123', 'I'));
-    return enableCORS($response->withHeader('Content-Type', 'application/pdf')->withStatus(200));
+    return $response->withHeader('Content-Type', 'application/pdf')->withHeader('Access-Control-Allow-Origin', '*')
+    ->withHeader('Access-Control-Allow-Headers', '*')
+    ->withHeader('Access-Control-Allow-Methods', '*')->withStatus(200);
 });
 
 $app->get('/calculate', function (Request $request, Response $response, array $args) {
