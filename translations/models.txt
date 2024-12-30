@@ -23,33 +23,3 @@ width
 空段 Empty Section: empty_section
 高效过滤段High Efficiency Filter Section: high_efficiency_filter_section
 送风段 Supply Air Section: supply_air_section
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
