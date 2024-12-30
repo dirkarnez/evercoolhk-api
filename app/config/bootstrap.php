@@ -64,7 +64,7 @@ $capsule = new Capsule;
 $capsule->addConnection([
     'driver'  => 'mysql',
     'host'    => $_ENV['DB_HOST'],
-    'host'    => $_ENV['DB_PORT'],
+    'port'    => $_ENV['DB_PORT'],
     'database'=> $_ENV['EMAIL_SENDER_ACCOUNT'],
     'username'=> $_ENV['EMAIL_SENDER_ACCOUNT'],
     'password'=> $_ENV['EMAIL_SENDER_ACCOUNT'],
