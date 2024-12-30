@@ -162,6 +162,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
         )
     );
 
+    /*
     // create new PDF document
     $pdf = new MyTCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
