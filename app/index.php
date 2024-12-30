@@ -37,6 +37,7 @@ $app->get('/hi', function (Request $request, Response $response, array $args) {
     // if (isset($queryParams['random_count'])) {
 
     // }
+    AHUModel::where()
 
     //     if (isset($queryParams['random_count'])) {
     //         $randomCount = (int)$queryParams['random_count'];
