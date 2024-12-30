@@ -8,13 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Hash implements CastsInboundAttributes
 {
     /**
-     * Create a new cast class instance.
-     */
-    public function __construct() {
-
-    }
- 
-    /**
      * Prepare the given value for storage.
      *
      * @param  array<string, mixed>  $attributes
