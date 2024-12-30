@@ -9,7 +9,7 @@ class AHUModel extends Model
     protected $table = 'ahu_models';
 
     protected $casts = [
-        'year' => 'date:Y-m-d',
+        'id' => 'date:Y-m-d',
     ];
 
 //     public function projects()
