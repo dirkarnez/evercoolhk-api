@@ -37,7 +37,7 @@ $app->get('/hi', function (Request $request, Response $response, array $args) {
     // if (isset($queryParams['random_count'])) {
 
     // }
-    select * from ahu_models where `maximum_air_volume` > 14900 ORDER BY `maximum_air_volume` LIMIT 2;
+    // select * from ahu_models where `maximum_air_volume` > 14900 ORDER BY `maximum_air_volume` LIMIT 2;
     AHUModel::where()
 
     //     if (isset($queryParams['random_count'])) {
