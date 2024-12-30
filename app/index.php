@@ -317,23 +317,23 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
         </thead>
         <tbody>' .
             array_map(function(int $value): string {
-                return '            <tr>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-            </tr>'
+                return '<tr>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                    <td style="'. $styleForTable_Th_Td . '"></td>
+                </tr>';
             }, $$body);
         . ' </tbody>
     </table>
