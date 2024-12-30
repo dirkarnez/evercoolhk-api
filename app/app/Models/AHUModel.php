@@ -3,7 +3,8 @@
 namespace MyApp\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Model;
+use MyApp\Casts\Hash;
+
 class AHUModel extends Model
 {
     protected $table = 'ahu_models';
