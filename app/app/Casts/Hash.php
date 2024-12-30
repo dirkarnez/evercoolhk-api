@@ -10,10 +10,8 @@ class Hash implements CastsInboundAttributes
     /**
      * Create a new cast class instance.
      */
-    public function __construct(
-        protected string|null $algorithm = null,
-    ) {
-        
+    public function __construct() {
+
     }
  
     /**
