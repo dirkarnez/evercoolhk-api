@@ -30,7 +30,7 @@ class Hash implements Castable
             // }
 
             public function get($model, string $key, $value, array $attributes) {
-                return "12cvv" . $value.length;
+                return "12cvv";
             }
 
             public function set($model, string $key, $value, array $attributes){
