@@ -72,8 +72,8 @@ $capsule->addConnection([
 $capsule->bootEloquent();
 $capsule->setAsGlobal();
 
-(require __DIR__ . '/routes.php')($app);
+// (require __DIR__ . '/routes.php')($app);
 
-(require __DIR__ . '/middleware.php')($app);
+// (require __DIR__ . '/middleware.php')($app);
 
 return $app;
