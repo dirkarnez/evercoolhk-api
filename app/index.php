@@ -320,7 +320,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
                 array_map(function(mixed $item, int $index) use ($styleForTable_Th_Td): string {
                     return '<tr>
                         <td style="'. $styleForTable_Th_Td . '">'. ($index + 1) . '</td>
-                        <td style="'. $styleForTable_Th_Td . '">' . $item["model"] . '</td>
+                        <td style="'. $styleForTable_Th_Td . '">' . $item["ahu_number"] . '</td>
                         <td style="'. $styleForTable_Th_Td . '">' . $item["model"] . '</td>
                         <td style="'. $styleForTable_Th_Td . '"></td>
                         <td style="'. $styleForTable_Th_Td . '"></td>
