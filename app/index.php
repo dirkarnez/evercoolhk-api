@@ -316,27 +316,9 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
             </tr>
         </thead>
         <tbody>' .
-            $body[0]->model
-            <tr>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-                <td style="'. $styleForTable_Th_Td . '"></td>
-            </tr>
             array_map(function(int $value): int {
                 return $value * 2;
-            };, $$body);
+            }, $$body);
         . ' </tbody>
     </table>
     <br>
