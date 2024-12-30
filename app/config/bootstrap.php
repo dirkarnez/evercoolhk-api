@@ -6,12 +6,23 @@ use \Illuminate\Database\Capsule\Manager as Capsule;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+define ('K_TCPDF_EXTERNAL_CONFIG', true);
+define ('K_PATH_IMAGES', __DIR__ . "/uploads/");
+
+ini_set('memory_limit', '-1');
+
 $containerBuilder = new ContainerBuilder();
-$containerBuilder->addDefinitions(__DIR__ . '/container.php');
+// $containerBuilder->addDefinitions(__DIR__ . '/container.php');
 $container = $containerBuilder->build();
 
-$app = $container->get(App::class);
-$app->setBasePath('/api');
+// $app = $container->get(App::class);
+// $app->setBasePath('/api');
+
+
+if (str_contains($_SERVER['SERVER_NAME'], 'evercoolhk.com')) { 
+    $app->setBasePath('/api');
+}
+
 
 $errorMiddleware = $app->addErrorMiddleware(true, true, true, null);
 //$errorMiddleware->setDefaultErrorHandler(function () use ($app) {

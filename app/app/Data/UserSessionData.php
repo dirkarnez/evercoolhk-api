@@ -4,12 +4,9 @@ namespace MyApp\Data;
 
 final class UserSessionData
 {
-    /** @var string */
-    public $login_id;
+    public string $login_id;
+    
+    public string $nickname;
 
-    /** @var string */
-    public $nickname;
-
-    /** @var string */
-    public $email;
+    public string $email;
 }

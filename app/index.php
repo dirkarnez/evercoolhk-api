@@ -1,8 +1,7 @@
 <?php
 
-/*
-(require __DIR__ . '/config/bootstrap.php')->run();*/
-require(__DIR__ . '/vendor/autoload.php');
+
+(require __DIR__ . '/config/bootstrap.php')->run();
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -18,16 +17,10 @@ use PHPMailer\PHPMailer\Exception;
 
 use MathPHP\NumericalAnalysis\Interpolation;
 
-define ('K_TCPDF_EXTERNAL_CONFIG', true);
-define ('K_PATH_IMAGES', __DIR__ . "/uploads/");
 
-ini_set('memory_limit', '-1');
 
 $app = AppFactory::create();
 
-if (str_contains($_SERVER['SERVER_NAME'], 'evercoolhk.com')) { 
-    $app->setBasePath('/api');
-}
 
 /**
  * @return array<string>
