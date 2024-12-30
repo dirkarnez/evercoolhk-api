@@ -45,14 +45,14 @@ $app->get('/model', function (Request $request, Response $response, array $args)
     if (isset($queryParams['actual_air_volume'])) {
         $actualAirVolume = (int)$queryParams['actual_air_volume'];
         // select * from ahu_models where `maximum_air_volume` > 14900 ORDER BY `maximum_air_volume` LIMIT 2;
-        return writeJSON(
+        return enableCORS(writeJSON(
             $response, 
             200, 
             AHUModel::where('maximum_air_volume', '>', $actualAirVolume)
                 ->orderBy("maximum_air_volume")
                 ->limit(2)
                 ->get()
-            );
+            )(;
     } else {
         return writeJSON(
             $response, 
