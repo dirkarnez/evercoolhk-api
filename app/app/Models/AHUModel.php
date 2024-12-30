@@ -23,7 +23,7 @@ class AHUModel extends Model
 
 <?php
 
-namespace App\Casts;
+namespace MyApp\Casts;
  
 use Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes;
 use Illuminate\Database\Eloquent\Model;
