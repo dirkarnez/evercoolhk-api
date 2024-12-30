@@ -1,7 +1,9 @@
 DROP TABLE IF EXISTS ahu_models;
 
+-- DEFAULT UNHEX(REPLACE(UUID(), '-', ''))
+
 CREATE TABLE ahu_models (
-	id BINARY(16) PRIMARY KEY, -- DEFAULT UNHEX(REPLACE(UUID(), '-', ''))
+	id BINARY(16) PRIMARY KEY,  
     model	VARCHAR(512),
     maximum_air_volume	INT,
     base_height	INT,
