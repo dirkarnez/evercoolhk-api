@@ -5,7 +5,7 @@ height_including_base
 width
 新回风混风段 New Return Air Mixing Section: new_return_air_mixing_section
 初效过滤段Primary Filter Section: primary_filter_section
-袋式中效过滤段Bag Medium Efficiency Filter Section: bag_medium_efficiency_filter_section
+袋式中效过滤段 Bag Medium Efficiency Filter Section: bag_medium_efficiency_filter_section
 初+袋式中效过滤段 Primary + Bag Medium Efficiency Filter Section: primary_bag_medium_efficiency_filter_section
 板式中效过滤段 Plate Medium Efficiency Filter Section: plate_medium_efficiency_filter_section
 初+板式中效过滤段 Primary + Plate Medium Efficiency Filter Section: primary_plate_medium_efficiency_filter_section
