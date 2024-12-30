@@ -158,7 +158,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
         writeJSON(
             $response, 
             200, 
-            "32"
+            "32 "
         )
     );
     
