@@ -34,7 +34,9 @@ function writeJSON(Response $response, int $statusCode, mixed $contentToEncode) 
 
 $app->get('/hi', function (Request $request, Response $response, array $args) {
     $queryParams = $request->getQueryParams();
-    if (isset($queryParams['random_count']))
+    if (isset($queryParams['random_count'])) {
+        
+    }
 
     //     if (isset($queryParams['random_count'])) {
     //         $randomCount = (int)$queryParams['random_count'];
