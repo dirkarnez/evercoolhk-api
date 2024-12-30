@@ -7,17 +7,9 @@ use Illuminate\Database\Eloquent\Model;
  
 class Hash implements Castable
 {
-    /**
-     * Prepare the given value for storage.
-     *
-     * @param  array<string, mixed>  $attributes
-     */
-    public function set($model, string $key, $value, array $attributes)
+    public static function castUsing(array $arguments): string
     {
-        return "123";
-        // return is_null($this->algorithm)
-        //             ? bcrypt($value)
-        //             : hash($this->algorithm, $value);
+        return AddressCast::class;
     }
 }
 ?>
