@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS ahu_models;
 
 CREATE TABLE ahu_models (
+	id BINARY(16) PRIMARY KEY, -- DEFAULT UNHEX(REPLACE(UUID(), '-', ''))
     model	VARCHAR(512),
     maximum_air_volume	INT,
     base_height	INT,
@@ -17,18 +18,22 @@ CREATE TABLE ahu_models (
     cooling_coil_section	INT, -- 表冷段
     heating_section	INT, -- 加热段
     electric_heating_section	INT, -- 电加热段
-    activated_carbon_filter_section	INT, -- 活性炭过滤段
-    heat_recycle_wheel_section	INT, -- 热回收轮段(标准)（另需要配均流段）
-    straight_plate_heat_pipe_section	INT, -- 直板热管段（标准段长）（另需要配均流段）
-    humidification_section	INT, -- 加湿段
-    fan_section	VARCHAR(512), -- 风机段
-    flow_equalization_section	INT, --均流段
+    activated_carbon_filter_section	INT, --  活性炭过滤段
+    heat_recycle_wheel_section	INT, --  热回收轮段(标准)（另需要配均流段）
+    straight_plate_heat_pipe_section INT, --  直板热管段（标准段长）（另需要配均流段）
+    humidification_section	INT,		 --  加湿段
+     fan_section VARCHAR(512), 			--  风机段
+    flow_equalization_section INT, 		-- 均流段
     empty_section	INT, -- 空段
     high_efficiency_filter_section	INT, -- 高效过滤段
-    supply_air_section	INT --送风段
-);
+    supply_air_section	INT, -- 送风段
+    created_at DATETIME,
+    updated_at DATETIME,
+    deleted_at DATETIME
+) ENGINE=InnoDB;
 
 INSERT INTO ahu_models (
+	id,
     model,
     maximum_air_volume,
     base_height,
@@ -50,12 +55,13 @@ INSERT INTO ahu_models (
     straight_plate_heat_pipe_section, -- 直板热管段（标准段长）（另需要配均流段）
     humidification_section, -- 加湿段
     fan_section, -- 风机段
-    flow_equalization_section, --均流段
+    flow_equalization_section, -- 均流段
     empty_section, -- 空段
     high_efficiency_filter_section, -- 高效过滤段
-    supply_air_section --送风段
-) VALUES
-	('TFMC-0510F', '1564 ', '80 ', '655 ', '880 ', '480 ', '180 ', '540 ', '540 ', '180 ', '180 ', '360 ', '360 ', '540 ', '300 ', '180 ', '480 ', '540 ', '540 ', '240 ', 'X', '480 ', '480 ', '360 ', '480 '),
+    supply_air_section -- 送风段
+) VALUES (
+	UNHEX(REPLACE(UUID(), '-', '')), 'TFMC-0510F', '1564 ', '80 ', '655 ', '880 ', '480 ', '180 ', '540 ', '540 ', '180 ', '180 ', '360 ', '360 ', '540 ', '300 ', '180 ', '480 ', '540 ', '540 ', '240 ', 'X', '480 ', '480 ', '360 ', '480 '
+);
 	('TFMC-1010F', '3127 ', '80 ', '960 ', '880 ', '480 ', '180 ', '540 ', '540 ', '180 ', '180 ', '360 ', '360 ', '540 ', '300 ', '180 ', '480 ', '540 ', '540 ', '240 ', 'X', '480 ', '480 ', '360 ', '480 '),
 	('TFMC-1015F', '4553 ', '80 ', '960 ', '1155 ', '480 ', '180 ', '540 ', '540 ', '180 ', '180 ', '360 ', '360 ', '540 ', '300 ', '180 ', '480 ', '540 ', '540 ', '240 ', 'X', '480 ', '480 ', '360 ', '480 '),
 	('TFMC-1020F', '6000 ', '80 ', '960 ', '1460 ', '480 ', '180 ', '540 ', '540 ', '180 ', '180 ', '360 ', '360 ', '540 ', '300 ', '180 ', '480 ', '540 ', '540 ', '240 ', 'X', '480 ', '480 ', '360 ', '480 '),
