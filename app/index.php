@@ -34,7 +34,7 @@ function writeJSON(Response $response, int $statusCode, mixed $contentToEncode) 
 
 $app->get('/hi', function (Request $request, Response $response, array $args) {
     
-    return writeJSON($response, 200, "h!!!iii");
+    return writeJSON($response, 200, Project::all());
 });
 
 $app->get('/names/{name}', function (Request $request, Response $response, array $args) {
