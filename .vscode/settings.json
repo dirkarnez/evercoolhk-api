@@ -5,7 +5,7 @@
         "Command Prompt": {
             "path": ["${env:windir}\\System32\\cmd.exe"],
             "env": { 
-                "PATH": "${env:USERPROFILE}\\Downloads\\PortableGit\\bin;D:\\Softwares\\PortableGit\\bin;${env:USERPROFILE}\\Downloads\\laragon-php-8.0.0-mariadb-10.11.10-portable-v6.0.0\\bin\\php\\php-8.0.0-Win32-vs16-x64"
+                "PATH": "C:\\Program Files\\Docker\\Docker\\resources\\bin;${env:USERPROFILE}\\Downloads\\PortableGit\\bin;D:\\Softwares\\PortableGit\\bin;${env:USERPROFILE}\\Downloads\\laragon-php-8.0.0-mariadb-10.11.10-portable-v6.0.0\\bin\\php\\php-8.0.0-Win32-vs16-x64"
             }
         }
     },
