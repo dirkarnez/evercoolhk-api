@@ -63,10 +63,10 @@ $errorMiddleware = $app->addErrorMiddleware(true, true, true, null);
 $capsule = new Capsule;
 $capsule->addConnection([
     'driver'  => 'mysql',
-    'host'    => $_ENV['EMAIL_SENDER_ACCOUNT'];,
-    'database'=> 'evercoolhk_2020',
-    'username'=> 'mysql2020',
-    'password'=> "cahxieyooteej",
+    'host'    => $_ENV['EMAIL_SENDER_ACCOUNT'],
+    'database'=> $_ENV['EMAIL_SENDER_ACCOUNT'],
+    'username'=> $_ENV['EMAIL_SENDER_ACCOUNT'],
+    'password'=> $_ENV['EMAIL_SENDER_ACCOUNT'],
     'charset' => 'utf8mb4',
     'collation'=> 'utf8mb4_unicode_ci',
     'prefix'  => ''
