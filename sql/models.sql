@@ -29,15 +29,15 @@ CREATE TABLE ahu_models (
 );
 
 INSERT INTO ahu_models (
-    model	VARCHAR(512),
-    maximum_air_volume	INT,
-    base_height	INT,
-    height_including_base	INT,
-    width	INT,
-    new_return_air_mixing_section	INT, -- 新回风混风段 
-    primary_filter_section	INT,	-- 初效过滤段
-    bag_medium_efficiency_filter_section	INT, -- 袋式中效过滤段
-    primary_bag_medium_efficiency_filter_section	INT, -- 初+袋式中效过滤段 
+    model,
+    maximum_air_volume,
+    base_height,
+    height_including_base,
+    width,
+    new_return_air_mixing_section, -- 新回风混风段 
+    primary_filter_section,	-- 初效过滤段
+    bag_medium_efficiency_filter_section, -- 袋式中效过滤段
+    primary_bag_medium_efficiency_filter_section, -- 初+袋式中效过滤段 
     plate_medium_efficiency_filter_section	INT, -- 板式中效过滤段
     primary_plate_medium_efficiency_filter_section	INT, -- 初+板式中效过滤段
     box_medium_efficiency_filter_section	INT, -- 箱式中效过滤段 
