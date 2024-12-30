@@ -9,7 +9,7 @@ class AHUModel extends Model
     protected $table = 'ahu_models';
 
     protected $casts = [
-        'id' => Hash::class.':sha256',
+        'id' => MyApp\Casts\Hash::class.':sha256',
     ];
 
 //     public function projects()
