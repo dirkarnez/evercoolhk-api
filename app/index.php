@@ -32,7 +32,7 @@ function writeJSON(Response $response, int $statusCode, mixed $contentToEncode) 
 }
 
 function writePDF(Response $response, int $statusCode, mixed $content) {
-    $response->getBody()->write($pdf->Output('123', 'I'));
+    $response->getBody()->write($content);
     return $response->withHeader('Content-Type', 'application/pdf')->withStatus($statusCode);
 }
 
