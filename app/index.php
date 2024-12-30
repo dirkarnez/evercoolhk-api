@@ -157,7 +157,7 @@ $app->get('/email-testing', function (Request $request, Response $response, arra
 });
 
 $app->post('/pdf', function (Request $request, Response $response, array $args) {
-    // $parsedBody = $request->getParsedBody();
+    $parsedBody = $request->getParsedBody();
     
     
     
@@ -445,7 +445,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
         writePDF(
             $response, 
             200, 
-            $pdf->Output('123', 'S')
+            $parsedBody//$pdf->Output('123', 'S')
         )
     );
 });
