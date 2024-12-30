@@ -12,7 +12,9 @@ class Hash implements CastsInboundAttributes
      */
     public function __construct(
         protected string|null $algorithm = null,
-    ) {}
+    ) {
+        
+    }
  
     /**
      * Prepare the given value for storage.
