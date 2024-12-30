@@ -19,15 +19,6 @@ use MathPHP\NumericalAnalysis\Interpolation;
 use Illuminate\Database\Eloquent\Collection;
 
 
-/**
- * @return array<string>
- */
-function takesAnInt(int $i) {
-    return [$i, "hello"];
-}
-
-takesAnInt(0);
-
 function enableCORS(Response $response) {
     return $response
         ->withHeader('Access-Control-Allow-Origin', '*')
