@@ -36,9 +36,17 @@ $app->get('/hi', function (Request $request, Response $response, array $args) {
     $queryParams = $request->getQueryParams();
     if (isset($queryParams['actual_air_volume'])) {
         $actualAirVolume = (int)$queryParams['actual_air_volume'];
+        // select * from ahu_models where `maximum_air_volume` > 14900 ORDER BY `maximum_air_volume` LIMIT 2;
+
+        return writeJSON($response, 200, 
+        AHUModel::where('maximum_air_volume', '>', $actualAirVolume)
+        ->orderBy("maximum_air_volume")
+        ->limit(2)
+        ->get()
+    );
     }
-    // select * from ahu_models where `maximum_air_volume` > 14900 ORDER BY `maximum_air_volume` LIMIT 2;
-    $actualAirVolume = isset($queryParams['actual_air_volume']) ? ;
+    
+
 
     // AHUModel::where('maximum_air_volume', '>', $actualAirVolume)
     //     ->orderBy("maximum_air_volume")
@@ -54,12 +62,7 @@ $app->get('/hi', function (Request $request, Response $response, array $args) {
     //         }
 
 
-    return writeJSON($response, 200, 
-        AHUModel::where('maximum_air_volume', '>', $actualAirVolume)
-        ->orderBy("maximum_air_volume")
-        ->limit(2)
-        ->get()
-    );
+
 });
 
 $app->get('/names/{name}', function (Request $request, Response $response, array $args) {
