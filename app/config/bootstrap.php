@@ -2,6 +2,7 @@
 
 use DI\ContainerBuilder;
 use DI\Container;
+use Slim\Factory\AppFactory;
 use Slim\App;
 use \Illuminate\Database\Capsule\Manager as Capsule;
 
