@@ -1,7 +1,7 @@
-
 <?php
 
 namespace MyApp\Casts;
+namespace MyApp\;
  
 use Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes;
 use Illuminate\Database\Eloquent\Model;
