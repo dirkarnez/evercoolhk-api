@@ -28,7 +28,33 @@ CREATE TABLE ahu_models (
     supply_air_section	INT --送风段
 );
 
-INSERT INTO ahu_models (model, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y) VALUES
+INSERT INTO ahu_models (
+    model	VARCHAR(512),
+    maximum_air_volume	INT,
+    base_height	INT,
+    height_including_base	INT,
+    width	INT,
+    new_return_air_mixing_section	INT, -- 新回风混风段 
+    primary_filter_section	INT,	-- 初效过滤段
+    bag_medium_efficiency_filter_section	INT, -- 袋式中效过滤段
+    primary_bag_medium_efficiency_filter_section	INT, -- 初+袋式中效过滤段 
+    plate_medium_efficiency_filter_section	INT, -- 板式中效过滤段
+    primary_plate_medium_efficiency_filter_section	INT, -- 初+板式中效过滤段
+    box_medium_efficiency_filter_section	INT, -- 箱式中效过滤段 
+    primary_box_medium_efficiency_filter_section	INT, -- 初+箱式中效过滤段
+    cooling_coil_section	INT, -- 表冷段
+    heating_section	INT, -- 加热段
+    electric_heating_section	INT, -- 电加热段
+    activated_carbon_filter_section	INT, -- 活性炭过滤段
+    heat_recycle_wheel_section	INT, -- 热回收轮段(标准)（另需要配均流段）
+    straight_plate_heat_pipe_section	INT, -- 直板热管段（标准段长）（另需要配均流段）
+    humidification_section	INT, -- 加湿段
+    fan_section	VARCHAR(512), -- 风机段
+    flow_equalization_section	INT, --均流段
+    empty_section	INT, -- 空段
+    high_efficiency_filter_section	INT, -- 高效过滤段
+    supply_air_section	INT --送风段
+) VALUES
 	('TFMC-0510F', '1564 ', '80 ', '655 ', '880 ', '480 ', '180 ', '540 ', '540 ', '180 ', '180 ', '360 ', '360 ', '540 ', '300 ', '180 ', '480 ', '540 ', '540 ', '240 ', 'X', '480 ', '480 ', '360 ', '480 '),
 	('TFMC-1010F', '3127 ', '80 ', '960 ', '880 ', '480 ', '180 ', '540 ', '540 ', '180 ', '180 ', '360 ', '360 ', '540 ', '300 ', '180 ', '480 ', '540 ', '540 ', '240 ', 'X', '480 ', '480 ', '360 ', '480 '),
 	('TFMC-1015F', '4553 ', '80 ', '960 ', '1155 ', '480 ', '180 ', '540 ', '540 ', '180 ', '180 ', '360 ', '360 ', '540 ', '300 ', '180 ', '480 ', '540 ', '540 ', '240 ', 'X', '480 ', '480 ', '360 ', '480 '),
