@@ -63,7 +63,7 @@ $errorMiddleware = $app->addErrorMiddleware(true, true, true, null);
 $capsule = new Capsule;
 $capsule->addConnection([
     'driver'  => 'mysql',
-    'host'    => '',
+    'host'    => 'localhost',
     'database'=> 'evercoolhk_2020',
     'username'=> 'mysql2020',
     'password'=> "cahxieyooteej",
