@@ -45,7 +45,11 @@ $app->get('/hi', function (Request $request, Response $response, array $args) {
                 ->limit(2)
                 ->get()
             );
-        }
+    } else {
+        return writeJSON(
+            $response, 
+            200, 
+    }
     
 
 
