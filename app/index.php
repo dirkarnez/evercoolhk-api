@@ -19,7 +19,7 @@ use MathPHP\NumericalAnalysis\Interpolation;
 
 
 
-$app = AppFactory::create();
+// $app = AppFactory::create();
 
 
 /**
