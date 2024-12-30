@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS ahu_models;
 
 CREATE TABLE ahu_models (
     model	VARCHAR(512),
-    b	INT,
+    maximum_air_volume	INT,
     c	INT,
     d	INT,
     e	INT,
