@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS ahu_models;
 CREATE TABLE ahu_models (
     model	VARCHAR(512),
     maximum_air_volume	INT,
-    base	INT,
+    base_height	INT,
     height_including_base	INT,
     width	INT,
     new_return_air_mixing_section	INT, -- 新回风混风段 
