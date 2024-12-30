@@ -151,8 +151,8 @@ $app->get('/email-testing', function (Request $request, Response $response, arra
     }
 });
 
-$app->get('/pdf', function (Request $request, Response $response, array $args) {
-    //$parsedBody = $request->getParsedBody();
+$app->post('/pdf', function (Request $request, Response $response, array $args) {
+    $parsedBody = $request->getParsedBody();
 
     return enableCORS(
         writeJSON(
