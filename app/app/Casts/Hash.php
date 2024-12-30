@@ -17,7 +17,7 @@ class Hash implements Castable
             }
 
             public function set($model, string $key, $value, array $attributes){
-                return "12cvv";
+                return "TODO!!!!!";
             }
         };
     }
