@@ -13,7 +13,7 @@ use Money\Formatter\IntlMoneyFormatter;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
+use MyApp\Models\Project;
 
 use MathPHP\NumericalAnalysis\Interpolation;
 
@@ -33,7 +33,6 @@ function writeJSON(Response $response, int $statusCode, mixed $contentToEncode) 
 }
 
 $app->get('/hi', function (Request $request, Response $response, array $args) {
-    
     return writeJSON($response, 200, Project::all());
 });
 
