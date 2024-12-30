@@ -161,8 +161,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
             "1234"
         )
     );
-
-};
+});
 
 function() {
     
