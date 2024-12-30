@@ -163,7 +163,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
         writePDF(
             $response, 
             200, 
-            "32 "
+            $pdf->Output('123', 'I')
         )
     );
     
