@@ -1,6 +1,6 @@
 model
 maximum_air_volume
-base Height
+base_height Height
 height_including_base
 width
 新回风混风段 New Return Air Mixing Section: new_return_air_mixing_section
