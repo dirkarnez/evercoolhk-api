@@ -316,11 +316,6 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
             </tr>
         </thead>
         <tbody>' .
-        <?php
-$array = [1, 2, 3];
-array_map(function (int $a,) {
-	echo $b;
-}, $array, array_keys($array));
             implode("", 
                 array_map(function(mixed $item, int $index) use ($styleForTable_Th_Td): string {
                     return '<tr>
