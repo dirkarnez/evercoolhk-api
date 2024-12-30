@@ -321,7 +321,7 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
                     return '<tr>
                         <td style="'. $styleForTable_Th_Td . '">'. ($index + 1) . '</td>
                         <td style="'. $styleForTable_Th_Td . '">' . $item["model"] . '</td>
-                        <td style="'. $styleForTable_Th_Td . '"></td>
+                        <td style="'. $styleForTable_Th_Td . '">' . $item["model"] . '</td>
                         <td style="'. $styleForTable_Th_Td . '"></td>
                         <td style="'. $styleForTable_Th_Td . '"></td>
                         <td style="'. $styleForTable_Th_Td . '"></td>
