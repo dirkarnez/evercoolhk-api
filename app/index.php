@@ -157,7 +157,7 @@ $app->get('/email-testing', function (Request $request, Response $response, arra
 });
 
 $app->post('/pdf', function (Request $request, Response $response, array $args) {
-    $params = $request->getBody();
+    $body = $request->getBody();
 
     // create new PDF document
     $pdf = new MyTCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
