@@ -7,7 +7,7 @@ CREATE TABLE ahu_models (
     height_including_base	INT,
     width	INT,
     new_return_air_mixing_section	INT, -- 新回风混风段 
-    primary_filter_section	INT,
+    primary_filter_section	INT,	-- 初效过滤段
     bag_medium_efficiency_filter_section	INT,
     primary_bag_medium_efficiency_filter_section	INT,
     plate_medium_efficiency_filter_section	INT,
