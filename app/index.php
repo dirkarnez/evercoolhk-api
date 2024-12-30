@@ -63,9 +63,6 @@ class MyTCPDF extends TCPDF{
 }
 
 $app->get('/email-testing', function (Request $request, Response $response, array $args) {
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-    $dotenv->load();
-    
     $mail = new PHPMailer(true); // Passing `true` enables exceptions
 
     try {
