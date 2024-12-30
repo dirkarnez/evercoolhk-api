@@ -22,8 +22,8 @@ CREATE TABLE ahu_models (
     straight_plate_heat_pipe_section_standard_length_requires_flow_equalization_section	INT, -- 直板热管段（标准段长）（另需要配均流段）
     humidification_section	INT, -- 加湿段
     fan_section	VARCHAR(512), -- 风机段
-    flow_equalization_section	INT,
-    empty_section	INT,
+    flow_equalization_section	INT, --均流段
+    empty_section	INT, -- 空段
     high_efficiency_filter_section	INT,
     supply_air_section	INT
 );
