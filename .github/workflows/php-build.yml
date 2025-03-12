@@ -11,8 +11,9 @@ jobs:
 
     - uses: php-actions/composer@v6
       with:
+        php_version: "8"
         working_dir: "app"
-        
+
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
