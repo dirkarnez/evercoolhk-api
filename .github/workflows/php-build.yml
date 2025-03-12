@@ -10,12 +10,9 @@ jobs:
     - uses: actions/checkout@v4
 
     - uses: php-actions/composer@v6
-      working-directory: ./
       with:
-        php_version: "5.6.40"
-        version: "2.2"
-        args: "--ignore-platform-reqs --optimize-autoloader"
         working_dir: "app"
+        
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
