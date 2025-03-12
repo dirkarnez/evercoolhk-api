@@ -14,6 +14,8 @@ jobs:
         php_version: "8.4"
         php_extensions: bcmath
         working_dir: ./app
+        
+    - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
 
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
