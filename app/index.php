@@ -1,6 +1,5 @@
 <?php
 
-
 $app = (require __DIR__ . '/config/bootstrap.php');
 
 use Psr\Http\Message\ResponseInterface as Response;
