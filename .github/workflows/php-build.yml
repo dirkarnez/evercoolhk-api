@@ -11,9 +11,9 @@ jobs:
     
     - uses: php-actions/composer@v6
       with:
-        php_version: "8.0"
+        php_version: "8.4"
         php_extensions: bcmath
-        working_dir: "app"
+        working_dir: ./app
 
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
