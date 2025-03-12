@@ -1,9 +1,4 @@
 {
-    "config": {
-        "platform": {
-            "php": "8.4.0"
-        }
-    },
     "require": {
         "php": "^8.4",
         "ext-json": "*",
