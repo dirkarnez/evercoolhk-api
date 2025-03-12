@@ -10,7 +10,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - uses: php-actions/composer@v6
-      working-directory: app
+      working-directory: ./app
       
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
