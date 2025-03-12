@@ -1,11 +1,11 @@
 {
     "config": {
         "platform": {
-            "php": "8.0.0"
+            "php": "8.4.0"
         }
     },
     "require": {
-        "php": "^8.0",
+        "php": "^8.4",
         "ext-json": "*",
         "illuminate/container": "^7.0",
         "illuminate/contracts": "^7.0",
@@ -21,10 +21,11 @@
         "symfony/http-foundation": "^5.2",
         "illuminate/database": "^7.24.0",
         "monolog/monolog": "^2.5",
-        "moneyphp/money": "^4.4.0"
+        "moneyphp/money": "^4.4.0",
+        "symfony/expression-language": "^7.2.0"
     },
     "require-dev": {
-        "vimeo/psalm": "^5.26.1"
+        "vimeo/psalm": "^6.8.9"
     },
     "autoload": {
         "psr-4": {
