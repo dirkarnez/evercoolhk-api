@@ -12,6 +12,9 @@ evercoolhk-api
   .\mysqlsh.exe "mysql://mysql2020:xxxx@mysql.hostcompany100.com:3306" -- util dumpSchemas evercoolhk_2020 --output-url=file:///%USERPROFILE%/Downloads/exports
   ```
 
+### Expression
+- https://symfony.com/doc/current/components/expression_language.html
+
 ### How to start
 - Just run `run.cmd`
 - for composer, go to Docker GUI terminal inside: `composer install` / `composer update`
