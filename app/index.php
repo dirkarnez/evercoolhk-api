@@ -17,6 +17,9 @@ use MyApp\Models\AHUModel;
 use MathPHP\NumericalAnalysis\Interpolation;
 use Illuminate\Database\Eloquent\Collection;
 
+use Symfony\Component\ExpressionLanguage\SyntaxError;
+use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
+use Symfony\Component\ExpressionLanguage\Parser;
 
 function enableCORS(Response $response) {
     return $response
@@ -92,6 +95,40 @@ $app->get('/names/{name}', function (Request $request, Response $response, array
     sort($names);
 
     $response->getBody()->write((string)json_encode($names, JSON_PRETTY_PRINT));
+    return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
+});
+
+/*
+input (json string): "{ \"formula\": "" }"
+*/
+$app->post('/expression', function (Request $request, Response $response, array $args) {
+    $body = json_decode($request->getBody()->getContents());
+    $formula = $body->{'formula'};
+
+    // $numberFormatter = new NumberFormatter('en_US', NumberFormatter::CURRENCY);
+    // $numberFormatter->setAttribute(NumberFormatter::MAX_FRACTION_DIGITS, 1);
+    // $numberFormatter->setAttribute(NumberFormatter::MIN_FRACTION_DIGITS, 1);
+    
+    // $moneyFormatter = new IntlMoneyFormatter($numberFormatter, new ISOCurrencies());
+    
+    // $names = array("Peter", "Paul", "Mary", $_SERVER['SERVER_NAME'], $moneyFormatter->format(Money::HKD(1000)->divide(6)), Money::HKD(1000)->divide(6)); // in cents
+    // array_push($names, $name);
+
+    // sort($names);
+
+
+    $ans = json_encode(
+        new ExpressionLanguage()->evaluate($formula,
+            [
+                'HEIGHT' => 1540,
+                'BASE_HEIGHT' => 80,
+                'WIDTH' => 1790,
+                'LENGTH' => 3660,
+            ]
+        )
+    );
+
+    $response->getBody()->write((string)json_encode($ans, JSON_PRETTY_PRINT));
     return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
 });
 

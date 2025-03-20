@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap-reboot.min.css" rel="stylesheet"> -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+</head>
+
+<body>
+    <div id="app"></div>
+    <!-- <script type="text/babel" src="./loaded-component.js"></script> -->
+
+    <script type="text/babel">
+        const MyForm = () => {
+            // =((G2-F2+H2)*4*(IF(I2>2200,2,1)+IF(I2>4200,1,0)+IF(I2>6000,1,0))+I2*4)*1.2/1000
+            const [inputFormula, setInputFormula] = React.useState(`((HEIGHT-BASE_HEIGHT+WIDTH)*4*((LENGTH > 2200 ? 2 :1 ) +(LENGTH>4200?1:0)+(LENGTH>6000?1:0))+LENGTH*4)*1.2/1000`);
+            const [inputValue, setInputValue] = React.useState('');
+
+            const handleSubmit = async (event) => {
+                event.preventDefault();
+
+                /*
+                I2=length
+                h2=width
+                G2=height 1540
+                f2=BaseHeight底座高度
+
+                */
+                // =((G2-F2+H2)*4*(IF(I2>2200,2,1)+IF(I2>4200,1,0)+IF(I2>6000,1,0))+I2*4)*1.2/1000
+                try {
+                    const jsonString = JSON.stringify({ formula: inputFormula });
+                    
+                    const response = await fetch('http://localhost:8000/expression', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: jsonString,
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    const result = await response.json();
+                    setInputValue(result);
+                    console.log('Success:', result);
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            };
+
+            return (
+                <form onSubmit={handleSubmit}>
+                    <div className="field">
+                        <label className="label">型材 formula</label>
+                        <div className="control">
+                            <textarea
+                                className="textarea" 
+                                value={inputFormula}
+                                onChange={(e) => setInputFormula(e.target.value)}
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div className="field">
+                        <label className="label">型材</label>
+                        <div className="control">
+                            <input
+                                type="text" 
+                                className="input" 
+                                value={inputValue}
+                                onChange={(e) => setInputValue(e.target.value)}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="field is-grouped">
+                        <div className="control">
+                            <button className="button is-link" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            );
+        };
+
+        function Application() {
+            return (
+                <section className="section">
+                    <div className="container">
+                        <MyForm />
+                    </div>
+                </section>
+            )
+        }
+        ReactDOM.createRoot(document.getElementById('app')).render(<Application />);
+    </script>
+    <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+    <!-- https://unpkg.com/react@18.2.0/umd/react.production.min.js -->
+    <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+    <!-- https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js -->
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</body>
+
+</html>
