@@ -24,4 +24,5 @@ jobs:
         username: evercoolhk
         password: ${{ secrets.PASSWORD }}
         local-dir: app/
-        server-dir: /www/dashboard/api/
+        server-dir: /www/api/
+    # directly put in root directory of api.evercoolhk.com
