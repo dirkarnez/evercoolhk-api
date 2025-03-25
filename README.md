@@ -64,6 +64,62 @@ server {
 	
 }
 ```
+### SSL + CORS needed to be enabled
+```
+server {
+    listen 8000 default_server;
+    listen 443 ssl default_server;
+    server_name localhost ;
+    root "C:/Users/Administrator/Downloads/evercoolhk-api/app/";
+    
+    index index.html index.htm index.php;
+ 
+    # Access Restrictions
+    allow       127.0.0.1;
+    deny        all;
+ 
+    include "C:/Users/Administrator/Downloads/laragon-php-8.4.0-mariadb-10.11.10-portable-v6.0.0/etc/nginx/alias/*.conf";
+
+    location / {
+        if ($request_method = OPTIONS ) {
+            add_header 'Access-Control-Allow-Origin'  '*';
+            add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, HEAD';
+            add_header 'Access-Control-Allow-Headers' 'Authorization, Origin, X-Requested-With, Content-Type, Accept';
+
+            return 200;
+        }
+
+		add_header 'Access-Control-Allow-Origin' '*';
+		
+		try_files $uri $uri/ /index.php?$query_string;
+		autoindex on;
+    }
+    
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass php_upstream;		
+        #fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    }
+    
+    # Enable SSL
+    ssl_certificate "C:/Users/Administrator/Downloads/laragon-php-8.4.0-mariadb-10.11.10-portable-v6.0.0/etc/ssl/server.crt";
+    ssl_certificate_key "C:/Users/Administrator/Downloads/laragon-php-8.4.0-mariadb-10.11.10-portable-v6.0.0/etc/ssl/server.key";
+    ssl_session_timeout 5m;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv3:+EXP;
+    ssl_prefer_server_ciphers on;
+	
+	
+    charset utf-8;
+	
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+    location ~ /\.ht {
+        deny all;
+    }
+	
+}
+```
 
 ### CMS
 - [Winter CMS](https://github.com/wintercms)
