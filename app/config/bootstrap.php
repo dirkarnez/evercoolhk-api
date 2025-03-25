@@ -31,9 +31,9 @@ $app = AppFactory::create();
 // $app->setBasePath('/api');
 
 
-if (str_contains($_SERVER['SERVER_NAME'], 'evercoolhk.com')) { 
-    $app->setBasePath('/api');
-}
+// if (str_contains($_SERVER['SERVER_NAME'], 'evercoolhk.com')) { 
+//     $app->setBasePath('/api');
+// }
 
 
 $errorMiddleware = $app->addErrorMiddleware(true, true, true, null);
