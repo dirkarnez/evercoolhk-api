@@ -23,7 +23,7 @@ evercoolhk-api
 - [dirkarnez/eloquent-wrapper](https://github.com/dirkarnez/eloquent-wrapper)
   
 ### Testing out
-- Largon / Largon: http://localhost:8000/names/hello
+- Largon / Largon: http://localhost:8000/names/hello / https://localhost/names/hello
 - https://evercoolhk.com/api/names/hello
  
 
