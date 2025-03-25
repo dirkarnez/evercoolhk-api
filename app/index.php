@@ -23,7 +23,7 @@ use Symfony\Component\ExpressionLanguage\Parser;
 
 function enableCORS(Response $response) {
     return $response
-        ->withHeader('Access-Control-Allow-Origin', 'https://dashboard.evercoolhk.com')
+        ->withHeader('Access-Control-Allow-Origin', '*')
         ->withHeader('Access-Control-Allow-Headers', '*')
         ->withHeader('Access-Control-Allow-Methods', '*');
 }
