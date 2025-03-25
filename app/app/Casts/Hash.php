@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  
 class Hash implements Castable
 {
-    public static function castUsing()
+    public static function castUsing(array $arguments)
     {
         return new class implements CastsAttributes
         {
