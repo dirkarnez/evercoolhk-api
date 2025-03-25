@@ -117,7 +117,7 @@ $app->post('/expression', function (Request $request, Response $response, array 
     // sort($names);
 
 
-    $ans = json_encode(new ExpressionLanguage()->evaluate($formula, [
+    $ans = json_encode((new ExpressionLanguage())->evaluate($formula, [
                 'HEIGHT' => 1540,
                 'BASE_HEIGHT' => 80,
                 'WIDTH' => 1790,
