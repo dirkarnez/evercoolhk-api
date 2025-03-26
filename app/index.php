@@ -21,13 +21,6 @@ use Symfony\Component\ExpressionLanguage\SyntaxError;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use Symfony\Component\ExpressionLanguage\Parser;
 
-function enableCORS(Response $response) {
-    return $response
-        ->withHeader('Access-Control-Allow-Origin', '*')
-        ->withHeader('Access-Control-Allow-Headers', '*')
-        ->withHeader('Access-Control-Allow-Methods', '*');
-}
-
 function writeJSON(Response $response, int $statusCode, mixed $contentToEncode) {
     $response->getBody()->write((string)json_encode($contentToEncode, JSON_PRETTY_PRINT));
     return $response->withHeader('Content-Type', 'application/json')->withStatus($statusCode);
@@ -53,13 +46,7 @@ $app->get('/model', function (Request $request, Response $response, array $args)
         $collection = AHUModel::all();
     }
 
-    return enableCORS(
-        writeJSON(
-            $response, 
-            200, 
-            $collection
-        )
-    );
+    return writeJSON($response, 200, $collection);
     
 
 
