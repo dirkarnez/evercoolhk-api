@@ -150,7 +150,6 @@ $app->post('/email-login', function (Request $request, Response $response, array
         //         'allow_self_signed' => true
         //     )
         // );
-        
 
         //Content
         $mail->isHTML(true); // Set email format to HTML
