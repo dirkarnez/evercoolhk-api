@@ -4,8 +4,79 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04523e104017a51e4bf66ccea4ada25a",
+    "content-hash": "734b9f616c97ad0ab0b406a76648a365",
     "packages": [
+        {
+            "name": "beste/in-memory-cache",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beste/in-memory-cache-php.git",
+                "reference": "f8299adc8abdaf7d309e8b28e53b4307ea49ebc7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beste/in-memory-cache-php/zipball/f8299adc8abdaf7d309e8b28e53b4307ea49ebc7",
+                "reference": "f8299adc8abdaf7d309e8b28e53b4307ea49ebc7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+                "psr/cache": "^2.0 || ^3.0",
+                "psr/clock": "^1.0"
+            },
+            "provide": {
+                "psr/cache-implementation": "2.0 || 3.0"
+            },
+            "require-dev": {
+                "beste/clock": "^3.0",
+                "beste/php-cs-fixer-config": "^3.2.0",
+                "friendsofphp/php-cs-fixer": "^3.62.0",
+                "phpstan/extension-installer": "^1.4.1",
+                "phpstan/phpstan": "^1.11.10",
+                "phpstan/phpstan-deprecation-rules": "^1.2.0",
+                "phpstan/phpstan-phpunit": "^1.4.0",
+                "phpstan/phpstan-strict-rules": "^1.6.0",
+                "phpunit/phpunit": "^10.5.2 || ^11.3.1",
+                "symfony/var-dumper": "^6.4 || ^7.1.3"
+            },
+            "suggest": {
+                "psr/clock-implementation": "Allows injecting a Clock, for example a frozen clock for testing"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Beste\\Cache\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jérôme Gamez",
+                    "email": "jerome@gamez.name"
+                }
+            ],
+            "description": "A PSR-6 In-Memory cache that can be used as a fallback implementation and/or in tests.",
+            "keywords": [
+                "beste",
+                "cache",
+                "psr-6"
+            ],
+            "support": {
+                "issues": "https://github.com/beste/in-memory-cache-php/issues",
+                "source": "https://github.com/beste/in-memory-cache-php/tree/1.3.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/jeromegamez",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-08-26T15:51:58+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.12.3",

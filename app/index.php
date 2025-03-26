@@ -21,6 +21,8 @@ use Symfony\Component\ExpressionLanguage\SyntaxError;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use Symfony\Component\ExpressionLanguage\Parser;
 
+
+
 function writeJSON(Response $response, int $statusCode, mixed $contentToEncode) {
     $response->getBody()->write((string)json_encode($contentToEncode, JSON_PRETTY_PRINT));
     return $response->withHeader('Content-Type', 'application/json')->withStatus($statusCode);
@@ -30,6 +32,26 @@ function writePDF(Response $response, int $statusCode, mixed $content) {
     $response->getBody()->write($content);
     return $response->withHeader('Content-Type', 'application/pdf')->withStatus($statusCode);
 }
+
+use \Illuminate\Database\Capsule\Manager as Capsule;
+
+$app->get('/reset-db', function (Request $request, Response $response, array $args) {
+    Capsule::schema()->dropIfExists('cache');
+
+    Capsule::schema()->create('cache', function ($table) 
+    {
+        $table->primary(['key']);
+        $table->string('key', 100);
+        $table->string('value', 100);
+        $table->timestamp('created_at');
+        $table->timestamp('updated_at');
+        
+        $table->charset = 'utf8mb4';
+        $table->collation = 'utf8mb4_unicode_ci';
+    });
+
+    return writeJSON($response, 200, array());
+});
 
 $app->get('/model', function (Request $request, Response $response, array $args) {
     $queryParams = $request->getQueryParams();
@@ -129,8 +151,36 @@ $app->post('/email-login', function (Request $request, Response $response, array
     $mail = new PHPMailer(true); // Passing `true` enables exceptions
     $data = $request->getParsedBody();
     $email = $data['email'];
+  
 
 
+    if (!str_ends_with(strtolower($email), strtolower("@evercoolhk.com"))) {
+        $response->getBody()->write((string)json_encode("Only @evercoolhk.com email can access this system", JSON_PRETTY_PRINT));
+        return $response->withHeader('Content-Type', 'application/json')->withStatus(401);
+    }
+
+    if (!$this->has('cache')) {
+        $response->getBody()->write((string)json_encode('Access code could not be sent. System error', JSON_PRETTY_PRINT));
+        return $response->withHeader('Content-Type', 'application/json')->withStatus(503);
+    }    
+    
+    $cache = $this->get('cache');
+
+    $username = substr($email, 0, strpos($email, '@'));
+
+    if (isset($data['access-code'])) {
+        $accessCodeInput = $data['access-code'];
+        $accessCodeCached = $cache->getItem($username)->get();
+
+        if ($accessCodeCached === $accessCodeInput) {
+            $response->getBody()->write((string)json_encode('Access code correct ' . $accessCodeInput . ' ' . $accessCodeCached . ' ' . $username, JSON_PRETTY_PRINT));
+            return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
+        } else {
+            $response->getBody()->write((string)json_encode('Access code not correct '. $accessCodeInput . ' ' . $accessCodeCached . ' ' . $username, JSON_PRETTY_PRINT));
+            return $response->withHeader('Content-Type', 'application/json')->withStatus(401);
+        }
+    }
+ 
     try {
         //Server settings
         # $mail->SMTPDebug = 2; // Enable verbose debug output
@@ -151,17 +201,23 @@ $app->post('/email-login', function (Request $request, Response $response, array
         //     )
         // );
 
+
+
+        $item = $cache->getItem($username);
+        $item->set(\MyApp\Utils\StringUtil::generateRandomString(10))->expiresAfter(new \DateInterval('PT5M'));;
+        $cache->save($item);
+        
         //Content
         $mail->isHTML(true); // Set email format to HTML
         $mail->Subject = 'New sign-in to your Ever Cool HK account';
-        $mail->Body = \MyApp\Utils\StringUtil::generateRandomString(10);
-        
+        $mail->Body = $cache->getItem($username)->get();
+
         $mail->send();
-        $response->getBody()->write((string)json_encode('Message has been sent', JSON_PRETTY_PRINT));
+        $response->getBody()->write((string)json_encode('Access code has been sent ', JSON_PRETTY_PRINT));
         return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
     } catch (Exception $e) {
-        $response->getBody()->write((string)json_encode('Message could not be sent. Mailer Error: '. $mail->ErrorInfo, JSON_PRETTY_PRINT));
-        return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
+        $response->getBody()->write((string)json_encode('Access code could not be sent. Mailer Error: '. $mail->ErrorInfo, JSON_PRETTY_PRINT));
+        return $response->withHeader('Content-Type', 'application/json')->withStatus(503);
     }
 });
 
@@ -504,13 +560,13 @@ $app->post('/pdf', function (Request $request, Response $response, array $args) 
     return enableCORS($response->withHeader('Content-Type', 'application/pdf')->withStatus(200));
     */
     // 
-    return enableCORS(
+    return 
         writePDF(
             $response, 
             200, 
             $pdf->Output('123', 'S')
         )
-    );
+    ;
 });
 
 $app->get('/calculate', function (Request $request, Response $response, array $args) {

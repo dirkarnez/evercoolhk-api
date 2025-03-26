@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
 use DI\ContainerBuilder;
 use DI\Container;
 use Slim\Factory\AppFactory;
@@ -8,8 +10,9 @@ use \Illuminate\Database\Capsule\Manager as Capsule;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Beste\Cache\InMemoryCache;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+
 
 define ('K_TCPDF_EXTERNAL_CONFIG', true);
 define ('K_PATH_IMAGES', __DIR__ . "/uploads/");
@@ -25,6 +28,9 @@ $dotenv->load();
 
 // Create Container using PHP-DI
 $container = new Container();
+$container->set('cache', function () {
+    return new InMemoryCache();
+});
 
 // Set container to create App with on AppFactory
 AppFactory::setContainer($container);
@@ -104,6 +110,7 @@ $capsule->addConnection([
 
 $capsule->bootEloquent();
 $capsule->setAsGlobal();
+
 
 // (require __DIR__ . '/routes.php')($app);
 
