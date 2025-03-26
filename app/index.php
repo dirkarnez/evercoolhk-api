@@ -143,7 +143,14 @@ $app->post('/email-login', function (Request $request, Response $response, array
         $mail->Port = 587; // TCP port to connect to
         $mail->setFrom($mail->Username, 'Ever Cool HK');
         $mail->addAddress($mail->Username, $email); // Add a recipient
-
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
+        
         //Content
         $mail->isHTML(true); // Set email format to HTML
         $mail->Subject = 'New sign-in to your Ever Cool HK account';
