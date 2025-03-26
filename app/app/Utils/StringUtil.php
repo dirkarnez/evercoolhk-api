@@ -2,24 +2,22 @@
 
 namespace MyApp\Utils;
  
-use Illuminate\Contracts\Database\Eloquent\Castable;
-use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
-use Illuminate\Database\Eloquent\Model;
- 
-class StringUtil implements Castable
+class StringUtil
 {
-    public static function castUsing(array $arguments)
+    public static function generateRandomString(int $length = 10): string {
     {
-        return new class implements CastsAttributes
-        {
-            public function get($model, string $key, $value, array $attributes) {
-                return bin2hex($value);
+        function 
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $charactersLength = strlen($characters);
+            $randomString = '';
+        
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[random_int(0, $charactersLength - 1)];
             }
-
-            public function set($model, string $key, $value, array $attributes){
-                return "TODO!!!!!";
-            }
-        };
+        
+            return $randomString;
+        }
+        
     }
 }
 ?>
