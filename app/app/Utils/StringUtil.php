@@ -4,20 +4,18 @@ namespace MyApp\Utils;
  
 class StringUtil
 {
-    public static function generateRandomString(int $length = 10): string {
+    public static function generateRandomString(int $length = 10): string 
     {
-        function 
-            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $charactersLength = strlen($characters);
-            $randomString = '';
-        
-            for ($i = 0; $i < $length; $i++) {
-                $randomString .= $characters[random_int(0, $charactersLength - 1)];
-            }
-        
-            return $randomString;
+
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+    
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[random_int(0, $charactersLength - 1)];
         }
-        
+    
+        return $randomString;
     }
 }
 ?>
