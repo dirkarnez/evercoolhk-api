@@ -155,7 +155,7 @@ $app->post('/email-login', function (Request $request, Response $response, array
         //Content
         $mail->isHTML(true); // Set email format to HTML
         $mail->Subject = 'New sign-in to your Ever Cool HK account';
-        $mail->Body = new \MyApp\Utils\StringUtil().;
+        $mail->Body = \MyApp\Utils\StringUtil::generateRandomString(10);
         
         $mail->send();
         $response->getBody()->write((string)json_encode('Message has been sent', JSON_PRETTY_PRINT));
