@@ -125,6 +125,39 @@ class MyTCPDF extends TCPDF{
     }
 }
 
+$app->post('/email-login', function (Request $request, Response $response, array $args) {
+    $mail = new PHPMailer(true); // Passing `true` enables exceptions
+    $data = $request->getParsedBody();
+    $email = $data['email'];
+
+
+    try {
+        //Server settings
+        # $mail->SMTPDebug = 2; // Enable verbose debug output
+        $mail->isMail(); // Set mailer to use SMTP
+        $mail->Host = $_ENV['EMAIL_HOST']; // Specify SMTP server
+        $mail->SMTPAuth = true; // Enable SMTP authentication
+        $mail->Username = $_ENV['EMAIL_SENDER_ACCOUNT']; // SMTP username
+        $mail->Password = $_ENV['EMAIL_SENDER_PASSWORD']; // SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587; // TCP port to connect to
+        $mail->setFrom($mail->Username, 'Ever Cool HK');
+        $mail->addAddress($mail->Username, $email); // Add a recipient
+        
+        //Content
+        $mail->isHTML(true); // Set email format to HTML
+        $mail->Subject = 'New sign-in to your Ever Cool HK account';
+        $mail->Body = '123';
+        
+        $mail->send();
+        $response->getBody()->write((string)json_encode('Message has been sent', JSON_PRETTY_PRINT));
+        return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
+    } catch (Exception $e) {
+        $response->getBody()->write((string)json_encode('Message could not be sent. Mailer Error: '. $mail->ErrorInfo, JSON_PRETTY_PRINT));
+        return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
+    }
+});
+
 $app->get('/email-testing', function (Request $request, Response $response, array $args) {
     $mail = new PHPMailer(true); // Passing `true` enables exceptions
 
