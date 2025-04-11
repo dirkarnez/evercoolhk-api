@@ -6,6 +6,9 @@ evercoolhk-api
 - 机组功能段
 - 风机电机定价
 
+### HTTPS
+- [docker安装nginx并配置https-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/1665969)
+
 ### Backing Up
 - ```cmd
   @REM https://cdn.mysql.com/Downloads/MySQL-Shell/mysql-shell-8.0.32-windows-x86-64bit.zip
