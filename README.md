@@ -19,7 +19,7 @@ evercoolhk-api
 - https://symfony.com/doc/current/components/expression_language.html
 
 ### How to start
-- Just run `run.cmd`
+- Just run `docker-run.cmd`
 - for composer, go to Docker GUI terminal inside: `composer install` / `composer update`
  
 ### ORM
@@ -28,6 +28,7 @@ evercoolhk-api
 ### Testing out
 - Largon / Largon: http://localhost:8000/names/hello / https://localhost/names/hello
 - https://evercoolhk.com/api/names/hello
+- https://localhost:4443/names/hello
  
 
 ### Localhost for [laragon-portable](https://github.com/dirkarnez/laragon-portable)

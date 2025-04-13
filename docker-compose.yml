@@ -34,9 +34,10 @@ services:
     restart: unless-stopped
     ports:
       - 8000:80
+      - 4443:443
     volumes:
       - ./app/:/var/www
-      - ./nginx/certs:/etc/nginx/certs 
+      - ./nginx/certs:/etc/ssl 
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks:
       - app-network
